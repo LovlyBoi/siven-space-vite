@@ -1,0 +1,94 @@
+@unit: 0.25rem;
+@bgc: #53555c;
+
+.menu-stick {
+  width: (5 * @unit);
+  height: (0.5 * @unit);
+  border-radius: (0.5 * 0.5 * @unit);
+  background-color: @bgc;
+}
+
+// 没有动画的菜单按钮
+.menu-static {
+  height: (5 * @unit);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+
+  & > div {
+    .menu-stick();
+  }
+}
+
+.menu-movable {
+  .menu-static();
+  &:hover {
+    & > div:first-of-type {
+      transition: transform 100ms ease-in-out;
+      transform: translateY(1.5 * @unit) rotate(90deg);
+    }
+    & > div:last-of-type {
+      transition: transform 100ms ease-in-out;
+      transform: translateY(-1.5 * @unit) rotate(90deg);
+    }
+  }
+}
+
+.cross-movable {
+  cursor: pointer;
+  height: (5 * @unit);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & > div {
+    .menu-stick();
+    &:first-of-type {
+      transform: translateY(1px) rotate(45deg);
+    }
+    &:last-of-type {
+      transform: translateY(-1px) rotate(-45deg);
+    }
+  }
+
+  &:hover {
+    & > div:first-of-type {
+      transform: translateY(1px);
+      transition: transform 100ms ease-in-out;
+    }
+    & > div:last-of-type {
+      transform: translateY(-1px);
+      transition: transform 100ms ease-in-out;
+    }
+  }
+}
+
+// 展开动画，不使用 width，不定宽度动画不生效
+.draw-enter-active,
+.draw-leave-active {
+  transition: all 500ms;
+}
+
+.draw-enter-from,
+.draw-leave-to {
+  max-width: 0;
+}
+
+.draw-enter-to,
+.draw-leave-from {
+  max-width: 100vw;
+}
+
+// 从上面渐入的动画
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 300ms;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-80px);
+}

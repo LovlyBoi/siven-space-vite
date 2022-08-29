@@ -1,0 +1,7 @@
+html, body, #app {
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+}
