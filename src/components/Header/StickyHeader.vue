@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky-header fixed mt-0 top-0 mx-auto p-4 bg-white rounded-b-lg shadow-sm text-gray-700 flex items-center justify-between"
+    class="sticky-header fixed mt-0 top-0 mx-auto p-4 bg-white rounded-b-lg shadow-sm text-gray-700 flex items-center justify-between z-10"
   >
     <div class="left flex items-center">
       <router-link
