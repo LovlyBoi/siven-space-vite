@@ -6,7 +6,9 @@
         <CardContainer />
       </template>
       <template #fallback>
-        <Loading />
+        <div class="loading-container w-full flex justify-center items-center">
+          <Loading />
+        </div>
       </template>
     </Suspense>
   </div>
@@ -33,6 +35,10 @@ const handleResolve = () => {
 
 <style lang="less" scoped>
 .width-limit {
-  height: 200vh;
+  // height: 200vh;
+}
+
+.loading-container {
+  height: 60vh;
 }
 </style>
