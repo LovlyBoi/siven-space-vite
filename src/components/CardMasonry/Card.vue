@@ -54,7 +54,7 @@ const picNum = ref(props.pictures.length > 4 ? 4 : props.pictures.length)
 // }
 
 const formatedPublishDate = computed(() =>
-  moment(new Date(parseInt(props.publishDate))).format('YYYY/M/DD')
+  moment(new Date(parseInt(props.publishDate))).format('YYYY / M / DD')
 )
 </script>
 

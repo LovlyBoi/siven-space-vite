@@ -5,21 +5,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+// import { nextTick } from 'vue'
 import Card from './Card.vue'
-import cards from './mockData.json'
-import { useMasonry } from '../../utils/useMasonry'
+import { getAllBlogs } from '../../api'
+
 import { CardType } from './type'
 
-onMounted(() => {
-  useMasonry('.card-container', {
-    // columnWidth: 320,
-    itemSelector: '.content-card',
-    gutter: 10,
-  })
-})
+// let cards = ref<CardType[] | null>(null)
+
+const cards = await getAllBlogs()
+
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>
