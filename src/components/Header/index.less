@@ -35,7 +35,7 @@
   }
 }
 
-.cross-movable {
+.cross {
   cursor: pointer;
   height: (5 * @unit);
   display: flex;
@@ -52,6 +52,10 @@
       transform: translateY(-1px) rotate(-45deg);
     }
   }
+}
+
+.cross-movable {
+  .cross();
 
   &:hover {
     & > div:first-of-type {
@@ -90,5 +94,5 @@
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-80px);
+  transform: translateY(-100%);
 }

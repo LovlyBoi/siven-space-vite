@@ -47,12 +47,6 @@ const props = defineProps<{
 
 const picNum = ref(props.pictures.length > 4 ? 4 : props.pictures.length)
 
-// const cardStore = useStore()
-
-// const showBlog = () => {
-//   cardStore.showCardPopUp(props.id)
-// }
-
 const formatedPublishDate = computed(() =>
   moment(new Date(parseInt(props.publishDate))).format('YYYY / M / DD')
 )
@@ -63,8 +57,8 @@ const formatedPublishDate = computed(() =>
   @media (min-width: 640px) {
     // 三列，两个边距共 20px，减掉之后除以 3
     width: calc((100% - 20px) / 3);
-    margin-bottom: 10px;
   }
+  margin-bottom: 10px;
   padding: 15px;
 
   .card-header .header-tag {

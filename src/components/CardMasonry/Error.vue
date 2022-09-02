@@ -18,13 +18,13 @@ import ServerErrorUrl from '../../assets/500.svg'
 import ClientErrorUrl from '../../assets/404.svg'
 
 const props = defineProps<{
-  error: AxiosError
+  error: unknown
 }>()
 
 console.log(props.error)
 
 const errorImgUrl = computed(() => {
-  switch (props.error.code) {
+  switch ((props.error as AxiosError).code) {
     case 'ERR_NETWORK':
       return networkErrorUrl
     case 'ECONNABORTED':
@@ -39,7 +39,7 @@ const errorImgUrl = computed(() => {
 })
 
 const errorMessage = computed(() => {
-  switch (props.error.code) {
+  switch ((props.error as AxiosError).code) {
     case 'ERR_NETWORK':
       return '网络错误'
     case 'ECONNABORTED':

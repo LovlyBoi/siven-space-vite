@@ -3,7 +3,7 @@
     <Header />
     <Suspense @resolve="handleResolve">
       <template #default>
-        <CardContainer />
+        <CardContainer :action="getAllBlogs" />
       </template>
       <template #fallback>
         <div class="loading-container w-full flex justify-center items-center">
@@ -20,6 +20,7 @@ import Header from '../components/Header'
 import CardContainer from '../components/CardMasonry/CardContainer.vue'
 import Loading from '../components/Loading/Loading.vue'
 import { useMasonry } from '../utils/useMasonry'
+import { getAllBlogs } from '../api'
 
 const handleResolve = () => {
   // 这段逻辑因为要等到数据到了再执行，所以需要放到回调函数中
@@ -34,9 +35,6 @@ const handleResolve = () => {
 </script>
 
 <style lang="less" scoped>
-.width-limit {
-  // height: 200vh;
-}
 
 .loading-container {
   height: 60vh;

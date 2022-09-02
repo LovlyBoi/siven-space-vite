@@ -8,6 +8,7 @@ import {
 import { throttle } from 'lodash-es'
 import CommonHeader from './CommonHeader.vue'
 import StickyHeader from './StickyHeader.vue'
+import MenuForPhone from './MenuForPhone.vue'
 import './index.less'
 
 export default defineComponent({
@@ -51,6 +52,7 @@ export default defineComponent({
       }
     }, 100)
 
+    // 挂载时检测页面滚动，展示stiky头部
     onMounted(() => {
       window.addEventListener('scroll', handleWindowScroll)
     })
@@ -61,16 +63,26 @@ export default defineComponent({
 
     const handleShowMenu = () => {
       console.log('手机菜单点击')
+      showPhoneMenu.value = true
     }
+
+    const handleUnShowMenu = () => {
+      showPhoneMenu.value = false
+    }
+
+    const showPhoneMenu = ref(false)
 
     return () => (
       <>
         <CommonHeader navList={navList} onShowMenu={handleShowMenu} />
-        <Transition name='fade'>
+        <Transition name="fade">
           {showStickyHeader.value ? (
             <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
           ) : null}
         </Transition>
+        {showPhoneMenu.value ? (
+          <MenuForPhone navList={navList} onUnShowMenu={handleUnShowMenu} />
+        ) : null}
       </>
     )
   },
