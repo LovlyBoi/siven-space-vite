@@ -5,7 +5,7 @@ export default function (): () => void {
   }
   return function () {
     if (rootEl) {
-      rootEl.style.overflow = 'auto'
+      rootEl.style.overflow = 'visible'
     }
   }
 }

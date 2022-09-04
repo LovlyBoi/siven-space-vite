@@ -16,11 +16,11 @@
 
 <script setup lang="ts">
 import { nextTick } from 'vue'
-import Header from '../components/Header'
-import CardContainer from '../components/CardMasonry/CardContainer.vue'
-import Loading from '../components/Loading/Loading.vue'
-import { useMasonry } from '../utils/useMasonry'
-import { getAllBlogs } from '../api'
+import Header from '@components/Header'
+import CardContainer from '@components/CardMasonry/CardContainer.vue'
+import Loading from '@components/Loading/Loading.vue'
+import { useMasonry } from '@/utils/useMasonry'
+import { getAllBlogs } from '@/api'
 
 const handleResolve = () => {
   // 这段逻辑因为要等到数据到了再执行，所以需要放到回调函数中

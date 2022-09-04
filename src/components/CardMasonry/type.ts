@@ -8,6 +8,6 @@ interface CardType {
   id: number
 }
 
-type TagColor = 'yellow' | 'blueGreen' | 'green' | 'orange'
+type TagColor = 'yellow' | 'pink' | 'green' | 'indigo'
 
 export type { CardType, TagColor }

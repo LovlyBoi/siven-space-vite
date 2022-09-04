@@ -75,14 +75,19 @@ export default defineComponent({
     return () => (
       <>
         <CommonHeader navList={navList} onShowMenu={handleShowMenu} />
-        <Transition name="fade">
+        <Transition name="fade-in-top">
           {showStickyHeader.value ? (
             <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
           ) : null}
         </Transition>
-        {showPhoneMenu.value ? (
+        <Transition name='wait-slide-in-right'>
+          {showPhoneMenu.value ? (
+            <MenuForPhone navList={navList} onUnShowMenu={handleUnShowMenu} />
+          ) : null}
+        </Transition>
+        {/* {showPhoneMenu.value ? (
           <MenuForPhone navList={navList} onUnShowMenu={handleUnShowMenu} />
-        ) : null}
+        ) : null} */}
       </>
     )
   },

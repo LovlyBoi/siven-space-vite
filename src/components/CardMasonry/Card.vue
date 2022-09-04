@@ -2,7 +2,8 @@
   <div class="content-card w-full bg-white box-border rounded-lg">
     <div class="card-header">
       <div
-        class="header-tag bg-indigo-400 text-xs font-light text-white inline-block mr-4"
+        class="header-tag text-xs font-light text-white inline-block mr-4"
+        :class="[mapColor[tag.color]]"
       >
         {{ tag.name }}
       </div>
@@ -44,6 +45,13 @@ const props = defineProps<{
   pictures: string[]
   id: number
 }>()
+
+const mapColor: { [k in TagColor]: string } = {
+  yellow: 'bg-yellow-400',
+  pink: 'bg-pink-400',
+  indigo: 'bg-indigo-400',
+  green: 'bg-green-400',
+}
 
 const picNum = ref(props.pictures.length > 4 ? 4 : props.pictures.length)
 
