@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-import moment from '../../utils/moment'
+import dayjs from '../../utils/day'
 import { TagColor } from './type'
 
 const props = defineProps<{
@@ -56,7 +56,7 @@ const mapColor: { [k in TagColor]: string } = {
 const picNum = ref(props.pictures.length > 4 ? 4 : props.pictures.length)
 
 const formatedPublishDate = computed(() =>
-  moment(new Date(parseInt(props.publishDate))).format('YYYY / M / DD')
+  dayjs(new Date(parseInt(props.publishDate))).format('YYYY / M / DD')
 )
 </script>
 
