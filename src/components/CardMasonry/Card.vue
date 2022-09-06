@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-import dayjs from '../../utils/day'
+import dayjs from '@utils/day'
 import { TagColor } from './type'
 
 const props = defineProps<{

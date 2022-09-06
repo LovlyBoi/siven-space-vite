@@ -19,7 +19,7 @@ import { nextTick } from 'vue'
 import Header from '@components/Header'
 import CardContainer from '@components/CardMasonry/CardContainer.vue'
 import Loading from '@components/Loading/Loading.vue'
-import { useMasonry } from '@/utils/useMasonry'
+import { useMasonry } from '@utils/useMasonry'
 import { getAllBlogs } from '@/api'
 
 const handleResolve = () => {

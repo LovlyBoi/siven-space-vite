@@ -12,16 +12,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { AxiosError } from 'axios'
-import networkErrorUrl from '../../assets/network-error.svg'
-import loadFailUrl from '../../assets/load-fail.svg'
-import ServerErrorUrl from '../../assets/500.svg'
-import ClientErrorUrl from '../../assets/404.svg'
+import networkErrorUrl from '@assets/network-error.svg'
+import loadFailUrl from '@assets/load-fail.svg'
+import ServerErrorUrl from '@assets/500.svg'
+import ClientErrorUrl from '@assets/404.svg'
 
 const props = defineProps<{
   error: unknown
 }>()
 
-console.log(props.error)
+// console.log(props.error)
 
 const errorImgUrl = computed(() => {
   switch ((props.error as AxiosError).code) {

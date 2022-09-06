@@ -76,8 +76,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { screenType } from '../../utils/clientWidth'
-import Avatar from '../../assets/avatar.jpg'
+import { screenType } from '@utils/clientWidth'
+import Avatar from '@assets/avatar.jpg'
 
 // header 是否展开
 const isHeaderExtend = ref(false)

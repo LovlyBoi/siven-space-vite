@@ -41,8 +41,8 @@
 </template>
 
 <script setup lang="ts">
-import { screenType } from '../../utils/clientWidth'
-import Avatar from '@/assets/avatar.jpg'
+import { screenType } from '@utils/clientWidth'
+import Avatar from '@assets/avatar.jpg'
 
 defineProps({
   navList: {

@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import useDisableScroll from '../../utils/useDisableScroll'
+import useDisableScroll from '@utils/useDisableScroll'
 
 const emit = defineEmits(['unShowMenu'])
 

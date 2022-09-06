@@ -23,6 +23,7 @@ try {
   cards = await props.action()
 } catch (e: unknown) {
   actionError.value = e
+  console.log(actionError.value)
 }
 </script>
 
