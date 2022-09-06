@@ -21,5 +21,22 @@
 ## 启动项目
 
 ```shell
+pnpm install
 pnpm dev
+```
+
+## 提交版本
+
+项目配置了 husky + commitlint，会校验提交格式。
+
+如果想要交互式提交，可以执行以下命令，让 commitzen 来接管提交：
+
+```shell
+pnpm commit
+```
+
+## 打包项目
+
+```shell
+pnpm build
 ```
