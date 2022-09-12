@@ -1,7 +1,45 @@
-html, body, #app {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#app {
   width: 100%;
 }
 
 body {
+  @apply bg-indigo-50 dark:bg-slate-800;
   min-height: 100%;
+}
+
+/* 文本主题颜色 */
+.theme-600-text {
+  @apply text-gray-600 dark:text-gray-200;
+}
+
+.theme-500-text {
+  @apply text-gray-500 dark:text-gray-300;
+}
+
+.theme-400-text {
+  @apply text-gray-400 dark:text-gray-400;
+}
+
+/* 背景主题颜色 */
+.theme-800-bg {
+  @apply bg-white dark:bg-slate-800;
+}
+
+.theme-600-bg {
+  @apply bg-white dark:bg-slate-600;
+}
+
+.theme-400-bg {
+  @apply bg-white dark:bg-slate-400;
+}
+
+/* 路由高亮 */
+.router-link-active {
+  @apply text-gray-600 dark:text-gray-200;
 }

@@ -19,17 +19,5 @@ const handleClick = () => {
 </script>
 
 <style lang="less" scoped>
-// .box {
-//   animation-name: slide-in-right;
-//   animation-duration: 3s;
-// }
 
-// @keyframes test {
-//   from {
-//     opacity: 0;
-//   }
-//   to {
-//     opacity: 1;
-//   }
-// }
 </style>

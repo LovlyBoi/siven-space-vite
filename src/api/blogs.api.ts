@@ -1,5 +1,5 @@
-import { CardType } from '../components/CardMasonry/type'
-import { request } from '../request'
+import { CardType } from '@components/CardMasonry/type'
+import { request } from '@/request'
 
 function getAllBlogs() {
   return request<CardType[]>({

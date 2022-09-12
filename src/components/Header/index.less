@@ -1,11 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @unit: 0.25rem;
-@bgc: #53555c;
+// 统一颜色入口，方便更换主题颜色
+.menu-bg {
+  @apply bg-gray-700 dark:bg-gray-200;
+}
 
 .menu-stick {
   width: (5 * @unit);
   height: (0.5 * @unit);
   border-radius: (0.5 * 0.5 * @unit);
-  background-color: @bgc;
+  .menu-bg();
 }
 
 // 没有动画的菜单按钮

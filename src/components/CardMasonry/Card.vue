@@ -1,5 +1,5 @@
 <template>
-  <div class="content-card w-full bg-white box-border rounded-lg">
+  <div class="content-card theme-600-bg w-full box-border rounded-lg">
     <div class="card-header">
       <div
         class="header-tag text-xs font-light text-white inline-block mr-4"
@@ -8,12 +8,12 @@
         {{ tag.name }}
       </div>
       <div
-        class="update-time text-xs inline-block text-gray-400 cursor-default"
+        class="update-time theme-400-text text-xs inline-block cursor-default"
       >
         {{ formatedPublishDate }}
       </div>
     </div>
-    <div class="card-title text-gray-600 tracking-wide my-3 cursor-pointer">
+    <div class="card-title theme-600-text tracking-wide my-3 cursor-pointer">
       {{ title }}
     </div>
     <div class="card-pictures-wrapper w-full" :class="[`pictures-${picNum}`]">

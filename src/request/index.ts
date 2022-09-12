@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
 const instance = axios.create({
-  timeout: 200,
+  timeout: 20000,
   baseURL: import.meta.env.VITE_AXIOS_BASEURL,
 })
 
