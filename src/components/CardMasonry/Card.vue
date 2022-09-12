@@ -34,16 +34,17 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import dayjs from '@utils/day'
-import { TagColor } from './type'
+import { TagColor, BlogType } from './type'
 
 const props = defineProps<{
-  tag: { name: string; color: TagColor }
+  id: string
   author: string
-  publishDate: string
-  updateDate: string
+  type: BlogType
   title: string
   pictures: string[]
-  id: number
+  tag: { name: string; color: TagColor }
+  publishDate: string
+  updateDate: string
 }>()
 
 const mapColor: { [k in TagColor]: string } = {
@@ -56,7 +57,7 @@ const mapColor: { [k in TagColor]: string } = {
 const picNum = ref(props.pictures.length > 4 ? 4 : props.pictures.length)
 
 const formatedPublishDate = computed(() =>
-  dayjs(new Date(parseInt(props.publishDate))).format('YYYY / M / DD')
+  dayjs(new Date(props.publishDate)).format('YYYY / M / DD')
 )
 </script>
 

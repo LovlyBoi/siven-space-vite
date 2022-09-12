@@ -15,12 +15,12 @@ export default defineComponent({
   setup() {
     const navList = [
       {
-        title: '首页',
-        to: '/',
+        title: '全部',
+        to: '/all',
       },
       {
         title: '笔记',
-        to: '/note',
+        to: '/notes',
       },
       {
         title: '生活随笔',

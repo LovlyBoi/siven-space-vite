@@ -1,13 +1,31 @@
-import { CardType } from '@components/CardMasonry/type'
+import { Card } from '@components/CardMasonry/type'
 import { request } from '@/request'
 
 function getAllBlogs() {
-  return request<CardType[]>({
+  return request<Card[]>({
     method: 'GET',
-    url: '/blogs'
+    url: '/blogs',
   })
 }
 
-export {
-  getAllBlogs,
+function getNotes() {
+  return request<Card[]>({
+    method: 'GET',
+    url: '/blogs',
+    params: {
+      type: 'note',
+    },
+  })
 }
+
+function getEssays() {
+  return request<Card[]>({
+    method: 'GET',
+    url: '/blogs',
+    params: {
+      type: 'essay',
+    },
+  })
+}
+
+export { getAllBlogs, getNotes, getEssays }

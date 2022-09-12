@@ -1,13 +1,19 @@
-interface CardType {
-  tag: { name: string; color: TagColor }
+interface Card {
+  id: string
+  title: string
   author: string
+  type: BlogType
+  tag: { name: string; color: TagColor }
   publishDate: string
   updateDate: string
-  title: string
   pictures: string[]
-  id: number
 }
 
 type TagColor = 'yellow' | 'pink' | 'green' | 'indigo'
 
-export type { CardType, TagColor }
+enum BlogType {
+  'note' = 1,
+  'essay' = 2,
+}
+
+export type { Card, TagColor, BlogType }
