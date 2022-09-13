@@ -18,7 +18,7 @@ export const screenSize = computed(() => {
     return 'md'
   } else if (clientWidth.value >= 1024 && clientWidth.value < 1280) {
     return 'lg'
-  } else if (clientWidth.value >= 1080 && clientWidth.value < 1536) {
+  } else if (clientWidth.value >= 1280 && clientWidth.value < 1536) {
     return 'xl'
   } else {
     return '2xl'
@@ -34,7 +34,7 @@ export const screenType = computed(() => {
     return 'pad'
   } else if (clientWidth.value >= 1024 && clientWidth.value < 1280) {
     return 'laptop'
-  } else if (clientWidth.value >= 1080 && clientWidth.value < 1536) {
+  } else if (clientWidth.value >= 1280 && clientWidth.value < 1536) {
     return 'desktop'
   } else {
     return 'desktop'

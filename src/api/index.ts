@@ -1,2 +1,2 @@
-export { getAllBlogs, getEssays, getNotes } from './blogs.api'
+export { getAllBlogs, getEssays, getNotes, getBlogById } from './blogs.api'
 

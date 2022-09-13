@@ -1,5 +1,5 @@
-import { Card } from '@components/CardMasonry/type'
 import { request } from '@/request'
+import type { Card, Blog } from '@/types'
 
 function getAllBlogs() {
   return request<Card[]>({
@@ -28,4 +28,11 @@ function getEssays() {
   })
 }
 
-export { getAllBlogs, getNotes, getEssays }
+function getBlogById(id: string) {
+  return request<Blog>({
+    method: 'GET',
+    url: `/blogs/${id}`,
+  })
+}
+
+export { getAllBlogs, getNotes, getEssays, getBlogById }

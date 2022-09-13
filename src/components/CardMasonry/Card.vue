@@ -35,7 +35,7 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
 import dayjs from '@utils/day'
-import { TagColor, BlogType } from './type'
+import { TagColor, BlogType } from '@/types'
 
 const props = defineProps<{
   id: string

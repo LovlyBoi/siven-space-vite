@@ -14,7 +14,7 @@ import CardVue from './Card.vue'
 import Error from './Error.vue'
 import Empty from './Empty.vue'
 
-import type { Card } from './type'
+import type { Card } from '@/types'
 
 const props = defineProps<{
   action: () => Promise<Card[]>

@@ -9,10 +9,17 @@ import { throttle } from 'lodash-es'
 import CommonHeader from './CommonHeader.vue'
 import StickyHeader from './StickyHeader.vue'
 import MenuForPhone from './MenuForPhone.vue'
+import PlainHeader from './PlainHeader.vue'
 import './index.less'
 
 export default defineComponent({
-  setup() {
+  props: {
+    type: {
+      type: String,
+      default: 'default',
+    },
+  },
+  setup(props) {
     const navList = [
       {
         title: '全部',
@@ -74,17 +81,28 @@ export default defineComponent({
 
     return () => (
       <>
-        <CommonHeader navList={navList} onShowMenu={handleShowMenu} />
-        <Transition name="fade-in-top">
-          {showStickyHeader.value ? (
-            <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
-          ) : null}
-        </Transition>
-        <Transition name="wait-slide-in-right">
-          {showPhoneMenu.value ? (
-            <MenuForPhone navList={navList} onUnShowMenu={handleUnShowMenu} />
-          ) : null}
-        </Transition>
+        {/* 如果请求 default，返回会动的 */}
+        {props.type === 'default' ? (
+          <>
+            <CommonHeader navList={navList} onShowMenu={handleShowMenu} />
+            <Transition name="fade-in-top">
+              {showStickyHeader.value ? (
+                <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
+              ) : null}
+            </Transition>
+            <Transition name="wait-slide-in-right">
+              {showPhoneMenu.value ? (
+                <MenuForPhone
+                  navList={navList}
+                  onUnShowMenu={handleUnShowMenu}
+                />
+              ) : null}
+            </Transition>
+          </>
+        ) : props.type === 'plain' ? (
+          // 返回不会动的
+          <PlainHeader navList={navList}></PlainHeader>
+        ) : null}
       </>
     )
   },
