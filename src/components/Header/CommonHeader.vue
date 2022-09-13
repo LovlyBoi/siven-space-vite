@@ -30,7 +30,7 @@
 
         <transition name="draw">
           <ul
-            class="nav-list theme-400-text flex items-center h-8 overflow-x-hidden mr-6"
+            class="nav-list theme-400-text flex items-center h-8 overflow-x-hidden mx-6"
             v-if="screenType !== 'phone' && isHeaderExtend"
           >
             <li

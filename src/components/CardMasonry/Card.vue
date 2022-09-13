@@ -13,11 +13,12 @@
         {{ formatedPublishDate }}
       </div>
     </div>
-    <div class="card-title theme-600-text tracking-wide my-3 cursor-pointer">
+    <router-link :to="`/article/${id}`" class="block card-title theme-600-text tracking-wide my-3">
       {{ title }}
-    </div>
+    </router-link>
     <div class="card-pictures-wrapper w-full" :class="[`pictures-${picNum}`]">
-      <div
+      <router-link
+        :to="`/article/${id}`"
         class="picture bg-slate-400 overflow-hidden flex"
         v-for="(picUrl, index) in pictures.slice(0, 4)"
         :key="picUrl + index"
@@ -26,7 +27,7 @@
           :src="picUrl"
           class="object-cover min-w-full min-h-full cursor-pointer"
         />
-      </div>
+      </router-link>
     </div>
   </div>
 </template>

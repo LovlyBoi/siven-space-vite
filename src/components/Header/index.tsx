@@ -80,14 +80,11 @@ export default defineComponent({
             <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
           ) : null}
         </Transition>
-        <Transition name='wait-slide-in-right'>
+        <Transition name="wait-slide-in-right">
           {showPhoneMenu.value ? (
             <MenuForPhone navList={navList} onUnShowMenu={handleUnShowMenu} />
           ) : null}
         </Transition>
-        {/* {showPhoneMenu.value ? (
-          <MenuForPhone navList={navList} onUnShowMenu={handleUnShowMenu} />
-        ) : null} */}
       </>
     )
   },
