@@ -2,11 +2,11 @@
   <div class="w-full h-screen flex justify-center items-center">
     <div class="w-1/2 flex flex-col items-center lg:w-1/3 -mt-24">
       <img class="w-full" :src="errorImgUrl" alt="404" />
-      <div class="mt-6 theme-400-text text-xl md:text-2xl lg:text-lg">
+      <div class="mt-6 theme-gray-400-text text-xl md:text-2xl lg:text-lg">
         × {{ errorMessage }}
       </div>
       <router-link
-        class="theme-400-text text-sm mt-4 underline"
+        class="theme-gray-400-text text-sm mt-4 underline"
         :to="{ path: '/', replace: true }"
         >返回首页</router-link
       >
@@ -21,11 +21,14 @@ import loadFailUrl from '@assets/load-fail.svg'
 import ServerErrorUrl from '@assets/500.svg'
 import ClientErrorUrl from '@assets/404.svg'
 
-const props = withDefaults(defineProps<{
-  code: string
-}>(), {
-  code: ''
-})
+const props = withDefaults(
+  defineProps<{
+    code: string
+  }>(),
+  {
+    code: '',
+  }
+)
 
 // console.log(props.code)
 

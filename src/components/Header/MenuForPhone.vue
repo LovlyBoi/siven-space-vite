@@ -25,7 +25,7 @@
           <div></div>
         </div>
 
-        <ul class="text-xl theme-500-text font-thin tracking-widest">
+        <ul class="text-xl theme-gray-500-text font-thin tracking-widest">
           <li v-for="item in navList" :key="item.title" class="my-2">
             <router-link :to="item.to">{{ item.title }}</router-link>
           </li>

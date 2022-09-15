@@ -1,5 +1,5 @@
 <template>
-  <div class="content-card theme-600-bg w-full box-border rounded-lg">
+  <div class="content-card theme-white-600-bg w-full box-border rounded-lg">
     <div class="card-header">
       <div
         class="header-tag text-xs font-light text-white inline-block mr-4"
@@ -8,12 +8,15 @@
         {{ tag.name }}
       </div>
       <div
-        class="update-time theme-400-text text-xs inline-block cursor-default"
+        class="update-time theme-gray-400-text text-xs inline-block cursor-default"
       >
         {{ formatedPublishDate }}
       </div>
     </div>
-    <router-link :to="`/article/${id}`" class="block card-title theme-600-text tracking-wide my-3">
+    <router-link
+      :to="`/article/${id}`"
+      class="block card-title theme-gray-600-text tracking-wide my-3"
+    >
       {{ title }}
     </router-link>
     <div class="card-pictures-wrapper w-full" :class="[`pictures-${picNum}`]">

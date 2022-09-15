@@ -1,21 +1,17 @@
 <template>
   <HeaderVue type="plain"></HeaderVue>
   <div class="">
-    <Outline v-if="screenType !== 'phone'"></Outline>
-    <main
-      class="article-wrapper sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-y-auto"
-    >
-      <div class="">article 页面 {{ route.params.id }}</div>
-      <div v-html="blog?.parsed.html"></div>
-    </main>
+    <Outline :outline="blog?.parsed.outline" v-if="screenType !== 'phone'"></Outline>
+    <ArticleBody :blog="blog"></ArticleBody>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import Outline from '@/components/Outline'
 import HeaderVue from '@/components/Header'
+import Outline from '@/components/Outline'
+import ArticleBody from '@/components/ArticleBody'
 import { screenType } from '@utils/clientWidth'
 import { getBlogById } from '@/api'
 import { AxiosError } from 'axios'
@@ -27,7 +23,7 @@ const route = useRoute()
 const blog = ref<Blog>()
 
 getBlogById(route.params.id as string)
-  .then((data) => {
+  .then(async (data) => {
     console.log(data)
     blog.value = data
   })

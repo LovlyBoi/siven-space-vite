@@ -14,28 +14,28 @@ body {
 }
 
 /* 文本主题颜色 */
-.theme-600-text {
+.theme-gray-600-text {
   @apply text-gray-600 dark:text-gray-200;
 }
 
-.theme-500-text {
+.theme-gray-500-text {
   @apply text-gray-500 dark:text-gray-300;
 }
 
-.theme-400-text {
+.theme-gray-400-text {
   @apply text-gray-400 dark:text-gray-400;
 }
 
 /* 背景主题颜色 */
-.theme-800-bg {
+.theme-white-800-bg {
   @apply bg-white dark:bg-slate-800;
 }
 
-.theme-600-bg {
+.theme-white-600-bg {
   @apply bg-white dark:bg-slate-600;
 }
 
-.theme-400-bg {
+.theme-white-400-bg {
   @apply bg-white dark:bg-slate-400;
 }
 

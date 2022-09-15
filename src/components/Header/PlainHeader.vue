@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky-header theme-600-bg sticky top-0 p-4 sm:py-2 lg:px-12 rounded-b-lg sm:rounded-none shadow-sm flex items-center justify-between z-10"
+    class="sticky-header theme-white-600-bg sticky top-0 p-4 sm:py-2 lg:px-12 rounded-b-lg sm:rounded-none shadow-sm flex items-center justify-between z-10"
   >
     <div class="left flex items-center">
       <router-link
@@ -10,17 +10,17 @@
         <img :src="Avatar" class="object-cover w-8 h-8 sm:w-12 sm:h-12" />
       </router-link>
       <div class="flex flex-col ml-2">
-        <a to="/" class="theme-600-text text-sm sm:text-lg tracking-wider"
+        <a to="/" class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
           >浅秋细雨</a
         >
-        <div class="theme-400-text text-xs tracking-wider font-thin">
+        <div class="theme-gray-400-text text-xs tracking-wider font-thin">
           智文的前端小站
         </div>
       </div>
     </div>
 
     <ul
-      class="nav-list theme-400-text flex items-center h-8 overflow-x-hidden"
+      class="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden"
       v-if="screenType !== 'phone'"
     >
       <li
@@ -58,6 +58,4 @@ const handlePhoneMenuClick = () => {
 }
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

@@ -2,7 +2,7 @@
   <div class="error-wrapper w-full mt-4 flex justify-center items-center">
     <div class="w-1/2 flex flex-col items-center lg:w-1/3">
       <img class="w-full" :src="errorImgUrl" alt="请求失败" />
-      <div class="mt-6 theme-400-text text-xl md:text-2xl lg:text-lg">
+      <div class="mt-6 theme-gray-400-text text-xl md:text-2xl lg:text-lg">
         × {{ errorMessage }}
       </div>
     </div>
