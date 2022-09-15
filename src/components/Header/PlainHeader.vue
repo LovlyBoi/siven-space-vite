@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky-header theme-white-600-bg sticky top-0 p-4 sm:py-2 lg:px-12 rounded-b-lg sm:rounded-none shadow-sm flex items-center justify-between z-10"
+    class="sticky-header theme-white-600-bg sticky top-0 p-4 sm:py-2 lg:px-8 rounded-b-lg sm:rounded-none shadow-sm flex items-center justify-between z-10"
   >
     <div class="left flex items-center">
       <router-link
@@ -10,9 +10,12 @@
         <img :src="Avatar" class="object-cover w-8 h-8 sm:w-12 sm:h-12" />
       </router-link>
       <div class="flex flex-col ml-2">
-        <a to="/" class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
-          >浅秋细雨</a
+        <router-link
+          to="/"
+          class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
         >
+          浅秋细雨
+        </router-link>
         <div class="theme-gray-400-text text-xs tracking-wider font-thin">
           智文的前端小站
         </div>
@@ -26,7 +29,7 @@
       <li
         v-for="item in navList"
         :key="item.title"
-        class="mx-6 whitespace-nowrap"
+        class="mx-6 whitespace-nowrap hover:text-indigo-400 dark:hover:text-pink-300 transition-all duration-300"
       >
         <router-link :to="item.to">{{ item.title }}</router-link>
       </li>

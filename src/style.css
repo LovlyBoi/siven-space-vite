@@ -14,6 +14,10 @@ body {
 }
 
 /* 文本主题颜色 */
+.theme-gray-800-text {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
 .theme-gray-600-text {
   @apply text-gray-600 dark:text-gray-200;
 }

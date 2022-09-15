@@ -1,8 +1,8 @@
 import { defineComponent, PropType, watch } from 'vue'
 import { observeHeaders } from '@/utils/intersectionObserver'
+import { useArticleStore } from '@/store/article'
 import { Blog } from '@/types'
 import './index.less'
-import './atom-one-dark.css'
 
 export default defineComponent({
   props: {
@@ -11,18 +11,21 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const articleStore = useArticleStore()
 
     watch(props, () => {
       if (props.blog) {
-        observeHeaders()
+        observeHeaders((hash) => {
+          articleStore.setActiveTab(hash)
+        })
       }
     })
 
     return () => (
       <>
-        <main class="article-wrapper fixed sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-y-auto">
+        <main class="article-wrapper fixed sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto">
           <div
-            class="marked"
+            class="marked theme-gray-800-text font-sans box-border"
             innerHTML={'<p></p>' + (props.blog?.parsed.html || '')}
           ></div>
         </main>
