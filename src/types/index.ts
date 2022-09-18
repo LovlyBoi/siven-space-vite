@@ -34,4 +34,5 @@ interface Blog extends Card {
   parsed: ParsedHtml
 }
 
-export type { Card, TagColor, BlogType, OutlineItem, Outline, ParsedHtml, Blog }
+export { BlogType }
+export type { Card, TagColor, OutlineItem, Outline, ParsedHtml, Blog }

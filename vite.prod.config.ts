@@ -2,8 +2,6 @@ import { UserConfig } from 'vite'
 import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { ViteAliases } from 'vite-aliases'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -28,11 +26,17 @@ const prodConfig: UserConfig = {
       targets: ['defaults', 'not IE 11']
     })
   ],
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
-  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id: string) {
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
+        }
+      }
+    }
+  }
 }
 
 export default prodConfig

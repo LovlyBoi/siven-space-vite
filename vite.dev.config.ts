@@ -2,8 +2,6 @@ import { UserConfig } from 'vite'
 import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import eslint from 'vite-plugin-eslint'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { ViteAliases } from 'vite-aliases'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -23,11 +21,6 @@ const config: UserConfig = {
       },
     }),
   ],
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
-  },
   server: {
     host: '0.0.0.0',
   },

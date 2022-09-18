@@ -20,14 +20,18 @@ const props = defineProps<{
   action: () => Promise<Card[]>
 }>()
 
+const emit = defineEmits(['card-loaded', 'card-empty', 'card-error'])
+
 let cards: Card[] | null = null
 const actionError = ref<unknown>(null)
 
 try {
   cards = await props.action()
+  cards.length > 0 ? emit('card-loaded', cards) : emit('card-empty')
 } catch (e: unknown) {
   actionError.value = e
   console.log(actionError.value)
+  emit('card-error')
 }
 </script>
 

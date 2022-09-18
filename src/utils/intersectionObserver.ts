@@ -12,16 +12,16 @@ export function useOberver(callback: IntersectionObserverCallback) {
   }
 }
 
-let lagacyIO: IntersectionObserver | null = null
+let legacyIO: IntersectionObserver | null = null
 
 // 监视所有h标签前面的节点，是否可见
 // 当改变hash之后，会调用回调函数
 export async function observeHeaders(
   callback?: (hash: string) => unknown
 ) {
-  lagacyIO?.disconnect()
+  legacyIO?.disconnect()
 
-  lagacyIO = new IntersectionObserver((els) => {
+  legacyIO = new IntersectionObserver((els) => {
     els.forEach((prev) => {
       if (prev.isIntersecting) {
         // 前置节点可见
@@ -33,7 +33,7 @@ export async function observeHeaders(
     replaceState(prevs, mapHeader, mapVisiable, callback)
   })
 
-  const { prevs, mapHeader, mapVisiable } = await addHeaders(lagacyIO)
+  const { prevs, mapHeader, mapVisiable } = await addHeaders(legacyIO)
 }
 
 async function addHeaders(io: IntersectionObserver) {
