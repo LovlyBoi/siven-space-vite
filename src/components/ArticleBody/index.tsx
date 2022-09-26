@@ -23,7 +23,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <main class="article-wrapper fixed sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto">
+        <main class="article-wrapper fixed sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto pb-6">
           <div
             class="marked theme-gray-800-text font-sans box-border"
             innerHTML={'<p></p>' + (props.blog?.parsed.html || '')}

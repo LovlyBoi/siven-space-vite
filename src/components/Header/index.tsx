@@ -57,7 +57,7 @@ export default defineComponent({
           showStickyHeader.value = false
         }
       }
-    }, 100)
+    }, 200)
 
     // 挂载时检测页面滚动，展示stiky头部
     onMounted(() => {

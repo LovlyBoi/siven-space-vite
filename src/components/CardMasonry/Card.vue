@@ -27,7 +27,7 @@
         :key="picUrl + index"
       >
         <img
-          :src="picUrl"
+          :src="picUrl + '?w=400'"
           class="object-cover min-w-full min-h-full cursor-pointer"
         />
       </router-link>

@@ -286,6 +286,7 @@
   ul,
   ol {
     padding-left: 30px;
+    list-style: disc;
   }
 
   ul:first-child,
@@ -300,10 +301,16 @@
 
   blockquote {
     /*border-left: 4px solid #dddddd;*/
-    border-left: 4px dotted #e5e8e8;
+    border-left: 4px dotted;
     padding: 0 12px;
-    color: #444444;
+    // color: #444444;
     font-size: 0.9em;
+    @media (prefers-color-scheme: dark) {
+      @apply text-gray-400 border-gray-400;
+    }
+    @media (prefers-color-scheme: light) {
+      @apply text-gray-500 border-blue-300;
+    }
   }
 
   blockquote blockquote {
@@ -359,8 +366,8 @@
 
   code,
   tt {
-    margin: 0 2px;
-    padding: 2px 4px;
+    // margin: 0 2px;
+    // padding: 2px 4px;
     @media (prefers-color-scheme: dark) {
       @apply bg-gray-600;
     }
@@ -370,6 +377,7 @@
   }
 
   pre {
+    margin: 12px 0;
     padding: 20px 24px;
     @apply rounded-md overflow-x-auto;
 
