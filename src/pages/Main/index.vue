@@ -11,6 +11,7 @@
                 @card-loaded="cardState = 'loaded'"
                 @card-empty="cardState = 'empty'"
                 @card-error="cardState = 'error'"
+                @card-update="handleCardsUpdate"
               ></component>
             </template>
             <template #fallback>
@@ -37,6 +38,16 @@ import { useMasonry } from '@utils/useMasonry'
 
 // card-container 状态，在 Vue3 属性默认可以透传，且事件监听被认为是属性
 let cardState = ref('preparing')
+
+const handleCardsUpdate = () => {
+  console.log('update')
+  nextTick(() => {
+    useMasonry('.card-container', {
+      itemSelector: '.content-card',
+      gutter: 10,
+    })
+  })
+}
 
 const handleResolve = () => {
   // 这段逻辑因为要等到数据到了再执行，所以需要放到回调函数中

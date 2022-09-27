@@ -1,19 +1,25 @@
 import { request } from '@/request'
 import type { Card, Blog } from '@/types'
 
-function getAllBlogs() {
+function getAllBlogs(ps = 10, pn = 1) {
   return request<Card[]>({
     method: 'GET',
     url: '/blogs',
+    params: {
+      ps,
+      pn,
+    },
   })
 }
 
-function getNotes() {
+function getNotes(ps = 10, pn = 1) {
   return request<Card[]>({
     method: 'GET',
     url: '/blogs',
     params: {
       type: 'note',
+      ps,
+      pn,
     },
   })
 }

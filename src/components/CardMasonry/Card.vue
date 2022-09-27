@@ -15,6 +15,7 @@
     </div>
     <router-link
       :to="`/article/${id}`"
+      target="_blank"
       class="block card-title theme-gray-600-text hover:text-indigo-400 dark:hover:text-pink-300 tracking-wide my-3 transition-all duration-300 delay-75"
     >
       {{ title }}
@@ -22,12 +23,13 @@
     <div class="card-pictures-wrapper w-full" :class="[`pictures-${picNum}`]">
       <router-link
         :to="`/article/${id}`"
+        target="_blank"
         class="picture bg-slate-400 overflow-hidden flex"
         v-for="(picUrl, index) in pictures.slice(0, 4)"
         :key="picUrl + index"
       >
         <img
-          :src="picUrl + '?w=400'"
+          :src="picUrl + '?w=500'"
           class="object-cover min-w-full min-h-full cursor-pointer"
         />
       </router-link>

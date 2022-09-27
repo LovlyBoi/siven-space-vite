@@ -6,6 +6,14 @@
     <Empty v-else />
   </div>
   <Error v-else :error="actionError" />
+  <button
+    v-if="!actionError && haveMore && cards && cards.length > 0"
+    class="theme-white-600-bg theme-gray-400-text px-6 py-2 rounded-md shadow-sm mx-auto block font-light text-sm"
+    :class="{ 'cursor-not-allowed': loadingMore }"
+    @click="handleLoadMore"
+  >
+    {{ loadingMore ? '加载中...' : '加载更多' }}
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -17,16 +25,46 @@ import Empty from './Empty.vue'
 import type { Card } from '@/types'
 
 const props = defineProps<{
-  action: () => Promise<Card[]>
+  action: (ps?: number, pn?: number) => Promise<Card[]>
 }>()
 
-const emit = defineEmits(['card-loaded', 'card-empty', 'card-error'])
+const emit = defineEmits([
+  'card-loaded',
+  'card-empty',
+  'card-error',
+  'card-update',
+])
 
 let cards: Card[] | null = null
 const actionError = ref<unknown>(null)
 
+let pageSize = 8,
+  pageNumber = 0
+
+const haveMore = ref(true)
+const loadingMore = ref(false)
+
+// 加载更多
+const handleLoadMore = async () => {
+  if (loadingMore.value) return
+  loadingMore.value = true
+  try {
+    const nextPart = await props.action(pageSize, ++pageNumber)
+    if (nextPart.length < pageSize) {
+      haveMore.value = false
+    }
+    cards?.push(...nextPart)
+    loadingMore.value = false
+  } catch (e: unknown) {
+    actionError.value = e
+    console.log(actionError.value)
+    emit('card-error')
+  }
+  emit('card-update')
+}
+
 try {
-  cards = await props.action()
+  cards = await props.action(pageSize, ++pageNumber)
   cards.length > 0 ? emit('card-loaded', cards) : emit('card-empty')
 } catch (e: unknown) {
   actionError.value = e
@@ -34,5 +72,3 @@ try {
   emit('card-error')
 }
 </script>
-
-<style lang="less" scoped></style>
