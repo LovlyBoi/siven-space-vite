@@ -18,14 +18,14 @@
         "
       >
         <div
-          class="cross absolute top-6 right-8 p-1 box-content"
+          class="no-dark-mode cross absolute top-6 right-8 p-1 box-content"
           @click="handleClose"
         >
           <div></div>
           <div></div>
         </div>
 
-        <ul class="text-xl theme-gray-500-text font-thin tracking-widest">
+        <ul class="text-xl text-gray-500 font-thin tracking-widest">
           <li v-for="item in navList" :key="item.title" class="my-2">
             <router-link :to="item.to">{{ item.title }}</router-link>
           </li>
@@ -69,21 +69,18 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="less" scoped>
-// .menu-mask {
-//   &::after {
-//     content: '';
-//     display: block;
-//     background-color: rgba(90, 90, 90, 0.2);
-//     width: 33.3333%;
-//     height: 100%;
-//   }
-// }
-
 .mask-left {
   background-color: rgba(90, 90, 90, 0.2);
 }
 
 .router-link-active {
   font-weight: 400;
+  @apply text-gray-600;
+}
+
+.no-dark-mode {
+  & > div {
+    @apply bg-gray-700;
+  }
 }
 </style>
