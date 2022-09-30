@@ -50,6 +50,7 @@ const handleCardsUpdate = () => {
 }
 
 const handleResolve = () => {
+  console.log(cardState.value)
   // 这段逻辑因为要等到数据到了再执行，所以需要放到回调函数中
   // 放在原组件中 await 是不可以的，应该是和源码实现有关
   if (cardState.value === 'loaded') {

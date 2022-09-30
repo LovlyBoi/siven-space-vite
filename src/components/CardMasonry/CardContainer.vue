@@ -35,7 +35,7 @@ const emit = defineEmits([
   'card-update',
 ])
 
-let cards: Card[] | null = null
+let cards: Card[] = []
 const actionError = ref<unknown>(null)
 
 let pageSize = 8,
@@ -48,27 +48,24 @@ const loadingMore = ref(false)
 const handleLoadMore = async () => {
   if (loadingMore.value) return
   loadingMore.value = true
+  await getCards()
+  emit('card-update')
+}
+
+async function getCards(firstCall = false) {
   try {
     const nextPart = await props.action(pageSize, ++pageNumber)
-    if (nextPart.length < pageSize) {
-      haveMore.value = false
-    }
-    cards?.push(...nextPart)
-    loadingMore.value = false
+    cards.push(...nextPart)
+    if (nextPart.length < pageSize) haveMore.value = false
+    if (firstCall)
+      cards.length > 0 ? emit('card-loaded', cards) : emit('card-empty')
   } catch (e: unknown) {
     actionError.value = e
     console.log(actionError.value)
     emit('card-error')
   }
-  emit('card-update')
 }
 
-try {
-  cards = await props.action(pageSize, ++pageNumber)
-  cards.length > 0 ? emit('card-loaded', cards) : emit('card-empty')
-} catch (e: unknown) {
-  actionError.value = e
-  console.log(actionError.value)
-  emit('card-error')
-}
+// 初始化数据
+await getCards(true)
 </script>

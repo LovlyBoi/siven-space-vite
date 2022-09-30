@@ -7,6 +7,7 @@ import { ViteAliases } from 'vite-aliases'
 import viteCDNPlugin from 'vite-plugin-cdn-import'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
+import viteCompression from 'vite-plugin-compression'
 
 const prodConfig: UserConfig = {
   plugins: [
@@ -21,6 +22,9 @@ const prodConfig: UserConfig = {
           title: '智文的前端笔记',
         },
       },
+    }),
+    viteCompression({
+      threshold: 50 * 8 * 1024,
     }),
     // 生产版本确保 ES5，Vite 默认打包模块化
     legacy({

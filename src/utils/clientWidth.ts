@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 const clientWidth = ref(document.body.clientWidth)
 
 window.onresize = () => {
-  console.log('-----')
   clientWidth.value = document.body.clientWidth
 }
 
