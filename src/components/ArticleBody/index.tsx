@@ -1,4 +1,5 @@
 import { defineComponent, PropType, watch } from 'vue'
+import FooterVue from '@/components/Footer/footer.vue'
 import { observeHeaders } from '@/utils/intersectionObserver'
 import { useArticleStore } from '@/store/article'
 import { Blog } from '@/types'
@@ -28,6 +29,9 @@ export default defineComponent({
             class="marked theme-gray-800-text font-sans box-border"
             innerHTML={'<p></p>' + (props.blog?.parsed.html || '')}
           ></div>
+          <div class="article-footer-wrapper">
+            <FooterVue></FooterVue>
+          </div>
         </main>
       </>
     )

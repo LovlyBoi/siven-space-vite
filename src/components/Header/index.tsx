@@ -33,6 +33,10 @@ export default defineComponent({
         title: '生活随笔',
         to: '/essays',
       },
+      {
+        title: '留言板',
+        to: '/messages',
+      },
     ]
 
     // header 是否sticky
