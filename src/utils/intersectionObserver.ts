@@ -16,9 +16,7 @@ let legacyIO: IntersectionObserver | null = null
 
 // 监视所有h标签前面的节点，是否可见
 // 当改变hash之后，会调用回调函数
-export async function observeHeaders(
-  callback?: (hash: string) => unknown
-) {
+export async function observeHeaders(callback?: (hash: string) => unknown) {
   legacyIO?.disconnect()
 
   legacyIO = new IntersectionObserver((els) => {

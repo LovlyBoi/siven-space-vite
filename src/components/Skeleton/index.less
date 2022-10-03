@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.skeleton-child {
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 60%,
+  ) #ededed;
+  background-size: 200%;
+  background-position-x: 120%;
+  animation: blink infinite 1s linear;
+}
+
+@keyframes blink {
+  0% {
+    background-position-x: 120%;
+  }
+  100% {
+    background-position-x: -20%;
+  }
+}

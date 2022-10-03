@@ -1,7 +1,10 @@
 <template>
   <HeaderVue type="plain"></HeaderVue>
   <div class="">
-    <Outline :outline="blog?.parsed.outline" v-if="screenType !== 'phone'"></Outline>
+    <Outline
+      :outline="blog?.parsed.outline"
+      v-if="screenType !== 'phone'"
+    ></Outline>
     <ArticleBody :blog="blog"></ArticleBody>
   </div>
 </template>

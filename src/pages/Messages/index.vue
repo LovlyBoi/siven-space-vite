@@ -9,6 +9,4 @@
 import HeaderVue from '@/components/Header'
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
