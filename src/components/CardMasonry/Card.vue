@@ -15,7 +15,6 @@
     </div>
     <router-link
       :to="`/article/${id}`"
-      target="_blank"
       class="block card-title theme-gray-600-text hover:text-indigo-400 dark:hover:text-pink-300 tracking-wide my-3 transition-all duration-300 delay-75"
     >
       {{ title }}

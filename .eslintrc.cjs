@@ -10,8 +10,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
-    // eslint-config-prettier，解决 eslint 和 prettier 冲突
-    'prettier',
+    // eslint-config-prettier，eslint-plugin-prettier，解决 eslint 和 prettier 冲突
+    'plugin:prettier/recommended',
   ],
   overrides: [],
   // 解析器，解析 Vue 文件
@@ -26,10 +26,6 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   // 规则
   rules: {
-    indent: ['error', 2, { SwitchCase: 1 }],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
     'vue/multi-word-component-names': 'off',
   },
 }

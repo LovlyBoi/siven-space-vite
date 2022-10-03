@@ -1,18 +1,35 @@
 <template>
   <footer
-    class="py-10 font-serif tracking-wide text-gray-600 cursor-default text-sm"
+    class="mt-10 py-6 font-serif tracking-wide text-gray-600 dark:text-gray-500 cursor-default text-sm md:flex md:justify-between border-t border-gray-300"
   >
-    Made with
-    <img
-      :src="LoveUrl"
-      @mouseenter="handleEnter"
-      @mouseleave="handleLeave"
-      class="inline-block w-4 -mt-0.5 mx-1 cursor-pointer"
-    />
-    by Siven
-    <transition name="fade">
-      <div v-show="toggler">Some good idea support by Semghh</div>
-    </transition>
+    <!-- 备案信息 -->
+    <div>
+      <div class="mb-1">
+        <span>Copyright © 2019 - 2022</span>
+        <span class="text-purple-500 mx-2">Siven</span>
+        <span>. All Rights Reserved.</span>
+      </div>
+      <a
+        class="text-gray-500 underline-offset-2 hover:underline font-sans"
+        href="https://beian.miit.gov.cn/"
+        target="_blank"
+        >黑ICP备123456号</a
+      >
+    </div>
+    <!-- 作者 -->
+    <div class="md:text-right mt-4 md:mt-0">
+      Made with
+      <img
+        :src="LoveUrl"
+        @mouseenter="handleEnter"
+        @mouseleave="handleLeave"
+        class="inline-block w-4 -mt-0.5 mx-1 cursor-pointer"
+      />
+      by Siven
+      <transition name="fade">
+        <div v-show="toggler">Some good idea support by Semghh</div>
+      </transition>
+    </div>
   </footer>
 </template>
 

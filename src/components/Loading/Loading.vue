@@ -1,5 +1,5 @@
 <template>
-  <div class="load-container">
+  <div class="load-container w-full flex justify-center items-center">
     <div class="boxLoading"></div>
   </div>
 </template>
