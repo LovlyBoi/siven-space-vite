@@ -5,3 +5,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+interface ImportMetaEnv {
+  readonly VITE_AXIOS_BASEURL: undefined | string
+}
+
+declare module 'masonry-layout'

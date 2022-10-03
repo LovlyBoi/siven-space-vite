@@ -8,18 +8,26 @@ import {
 import { throttle } from 'lodash-es'
 import CommonHeader from './CommonHeader.vue'
 import StickyHeader from './StickyHeader.vue'
+import MenuForPhone from './MenuForPhone.vue'
+import PlainHeader from './PlainHeader.vue'
 import './index.less'
 
 export default defineComponent({
-  setup() {
+  props: {
+    type: {
+      type: String,
+      default: 'default',
+    },
+  },
+  setup(props) {
     const navList = [
       {
-        title: '首页',
-        to: '/',
+        title: '全部',
+        to: '/all',
       },
       {
         title: '笔记',
-        to: '/note',
+        to: '/notes',
       },
       {
         title: '生活随笔',
@@ -49,8 +57,9 @@ export default defineComponent({
           showStickyHeader.value = false
         }
       }
-    }, 100)
+    }, 200)
 
+    // 挂载时检测页面滚动，展示stiky头部
     onMounted(() => {
       window.addEventListener('scroll', handleWindowScroll)
     })
@@ -61,16 +70,39 @@ export default defineComponent({
 
     const handleShowMenu = () => {
       console.log('手机菜单点击')
+      showPhoneMenu.value = true
     }
+
+    const handleUnShowMenu = () => {
+      showPhoneMenu.value = false
+    }
+
+    const showPhoneMenu = ref(false)
 
     return () => (
       <>
-        <CommonHeader navList={navList} onShowMenu={handleShowMenu} />
-        <Transition name='fade'>
-          {showStickyHeader.value ? (
-            <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
-          ) : null}
-        </Transition>
+        {/* 如果请求 default，返回会动的 */}
+        {props.type === 'default' ? (
+          <>
+            <CommonHeader navList={navList} onShowMenu={handleShowMenu} />
+            <Transition name="fade-in-top">
+              {showStickyHeader.value ? (
+                <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
+              ) : null}
+            </Transition>
+            <Transition name="wait-slide-in-right">
+              {showPhoneMenu.value ? (
+                <MenuForPhone
+                  navList={navList}
+                  onUnShowMenu={handleUnShowMenu}
+                />
+              ) : null}
+            </Transition>
+          </>
+        ) : props.type === 'plain' ? (
+          // 返回不会动的
+          <PlainHeader navList={navList}></PlainHeader>
+        ) : null}
       </>
     )
   },

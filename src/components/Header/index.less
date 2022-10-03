@@ -1,11 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @unit: 0.25rem;
-@bgc: #53555c;
+// 统一颜色入口，方便更换主题颜色
+.menu-bg {
+  @apply bg-gray-700 dark:bg-gray-200;
+}
 
 .menu-stick {
   width: (5 * @unit);
   height: (0.5 * @unit);
   border-radius: (0.5 * 0.5 * @unit);
-  background-color: @bgc;
+  .menu-bg();
 }
 
 // 没有动画的菜单按钮
@@ -35,7 +42,7 @@
   }
 }
 
-.cross-movable {
+.cross {
   cursor: pointer;
   height: (5 * @unit);
   display: flex;
@@ -52,6 +59,10 @@
       transform: translateY(-1px) rotate(-45deg);
     }
   }
+}
+
+.cross-movable {
+  .cross();
 
   &:hover {
     & > div:first-of-type {
@@ -65,7 +76,7 @@
   }
 }
 
-// 展开动画，不使用 width，不定宽度动画不生效
+// header展开动画，不使用 width，不定宽度动画不生效
 .draw-enter-active,
 .draw-leave-active {
   transition: all 500ms;
@@ -82,13 +93,69 @@
 }
 
 // 从上面渐入的动画
+.fade-in-top-enter-active,
+.fade-in-top-leave-active {
+  transition: all 300ms;
+}
+
+.fade-in-top-enter-from,
+.fade-in-top-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 300ms;
+  transition: all 200ms;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-80px);
 }
+
+// 右侧滑入动画
+@slide-time: 200ms;
+
+.slide-in-right-enter-from,
+.slide-in-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-in-right-enter-active,
+.slide-in-right-leave-active {
+  transition: all @slide-time;
+}
+// 空动画，为了让外层的组件不立即销毁
+.wait-slide-in-right-enter-active,
+.wait-slide-in-right-leave-active {
+  transition: all @slide-time;
+}
+
+// .slide-in-right {
+//   animation-name: slide-in-right;
+//   animation-duration: 300ms;
+// }
+
+// .slide-out-right {
+//   animation-name: slide-out-right;
+//   animation-duration: 300ms;
+// }
+
+// @keyframes slide-in-right {
+//   0% {
+//     transform: translateX(100%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }
+
+// @keyframes slide-out-right {
+//   0% {
+//     transform: translateX(0);
+//   }
+//   100% {
+//     transform: translateX(100%);
+//   }
+// }

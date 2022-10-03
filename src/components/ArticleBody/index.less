@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.article-wrapper {
+  @apply px-4;
+  top: 68px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  @media (min-width: 640px) {
+    top: 60px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+  }
+  code.hljs {
+    padding: 3px 5px;
+  }
+  .hljs {
+    color: #abb2bf;
+    background: #282c34;
+  }
+  .hljs-comment,
+  .hljs-quote {
+    color: #5c6370;
+    font-style: italic;
+  }
+  .hljs-doctag,
+  .hljs-formula,
+  .hljs-keyword {
+    color: #c678dd;
+  }
+  .hljs-deletion,
+  .hljs-name,
+  .hljs-section,
+  .hljs-selector-tag,
+  .hljs-subst {
+    color: #e06c75;
+  }
+  .hljs-literal {
+    color: #56b6c2;
+  }
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta .hljs-string,
+  .hljs-regexp,
+  .hljs-string {
+    color: #98c379;
+  }
+  .hljs-attr,
+  .hljs-number,
+  .hljs-selector-attr,
+  .hljs-selector-class,
+  .hljs-selector-pseudo,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable {
+    color: #d19a66;
+  }
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-meta,
+  .hljs-selector-id,
+  .hljs-symbol,
+  .hljs-title {
+    color: #61aeee;
+  }
+  .hljs-built_in,
+  .hljs-class .hljs-title,
+  .hljs-title.class_ {
+    color: #e6c07b;
+  }
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  .hljs-strong {
+    font-weight: 700;
+  }
+  .hljs-link {
+    text-decoration: underline;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  pre code.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+  }
+  code.hljs {
+    padding: 3px 5px;
+  }
+  .hljs {
+    color: #383a42;
+    background: #fafafa;
+  }
+  .hljs-comment,
+  .hljs-quote {
+    color: #a0a1a7;
+    font-style: italic;
+  }
+  .hljs-doctag,
+  .hljs-formula,
+  .hljs-keyword {
+    color: #a626a4;
+  }
+  .hljs-deletion,
+  .hljs-name,
+  .hljs-section,
+  .hljs-selector-tag,
+  .hljs-subst {
+    color: #e45649;
+  }
+  .hljs-literal {
+    color: #0184bb;
+  }
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-meta .hljs-string,
+  .hljs-regexp,
+  .hljs-string {
+    color: #50a14f;
+  }
+  .hljs-attr,
+  .hljs-number,
+  .hljs-selector-attr,
+  .hljs-selector-class,
+  .hljs-selector-pseudo,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable {
+    color: #986801;
+  }
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-meta,
+  .hljs-selector-id,
+  .hljs-symbol,
+  .hljs-title {
+    color: #4078f2;
+  }
+  .hljs-built_in,
+  .hljs-class .hljs-title,
+  .hljs-title.class_ {
+    color: #c18401;
+  }
+  .hljs-emphasis {
+    font-style: italic;
+  }
+  .hljs-strong {
+    font-weight: 700;
+  }
+  .hljs-link {
+    text-decoration: underline;
+  }
+}
+
+.marked {
+  max-width: 720px;
+  margin: 0 auto;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    cursor: text;
+  }
+
+  h1 {
+    text-align: center;
+    padding-bottom: 0.3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    margin: 1em auto 1.2em auto;
+    font-weight: 300;
+  }
+
+  h1:after {
+    border-bottom: 2px dashed #afec9e;
+    content: '';
+    width: 100px;
+    display: block;
+    margin: 0.2em auto 0 auto;
+    height: 2px;
+  }
+
+  h2 {
+    /*padding-bottom: .3em;
+     font-size: 1.75em;
+     line-height: 1.225;
+     border-bottom: 1px solid #eee;*/
+    font-size: 1.75em;
+    padding-left: 9px;
+    line-height: 1.4;
+    border-left: 6px solid #c5e1ff;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+  }
+
+  h3:before {
+    border-radius: 50%;
+    background-color: #8ac6fd;
+    content: '';
+    width: 6px;
+    display: inline-block;
+    height: 6px;
+    vertical-align: middle;
+    margin-bottom: 0.18em;
+    margin-right: 8px;
+  }
+
+  h4 {
+    font-size: 1.25em;
+  }
+
+  h4:before {
+    background-color: #9ed0ff;
+    content: '';
+    width: 6px;
+    display: inline-block;
+    height: 2px;
+    vertical-align: middle;
+    margin-bottom: 0.18em;
+    margin-right: 8px;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  h6 {
+    font-size: 1em;
+    color: #777;
+  }
+
+  p,
+  blockquote,
+  ul,
+  ol,
+  dl,
+  table {
+    margin: 0.8em 0;
+  }
+
+  li > ol,
+  li > ul {
+    margin: 0 0;
+  }
+
+  hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
+  }
+  h1 p,
+  h2 p,
+  h3 p,
+  h4 p,
+  h5 p,
+  h6 p {
+    margin-top: 0;
+  }
+
+  li p.first {
+    display: inline-block;
+  }
+
+  ul,
+  ol {
+    padding-left: 30px;
+    list-style: disc;
+  }
+
+  ul:first-child,
+  ol:first-child {
+    margin-top: 0;
+  }
+
+  ul:last-child,
+  ol:last-child {
+    margin-bottom: 0;
+  }
+
+  blockquote {
+    /*border-left: 4px solid #dddddd;*/
+    border-left: 4px dotted;
+    padding: 0 12px;
+    // color: #444444;
+    font-size: 0.9em;
+    @media (prefers-color-scheme: dark) {
+      @apply text-gray-400 border-gray-400;
+    }
+    @media (prefers-color-scheme: light) {
+      @apply text-gray-500 border-blue-300;
+    }
+  }
+
+  blockquote blockquote {
+    padding-right: 0;
+  }
+
+  table {
+    padding: 0;
+    word-break: initial;
+  }
+
+  table tr {
+    border-top: 1px solid #dadfe6;
+    margin: 0;
+    padding: 0;
+  }
+
+  table.md-table tr:nth-child(2n) {
+    background-color: #fafbfc;
+  }
+
+  table tr th {
+    font-weight: 400;
+    border: 1px solid #dadfe6;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    border: 1px solid #dadfe6;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr th:first-child,
+  table tr td:first-child {
+    margin-top: 0;
+  }
+
+  table tr th:last-child,
+  table tr td:last-child {
+    margin-bottom: 0;
+  }
+
+  code,
+  tt {
+    font-size: 90%;
+    border-radius: 3px;
+    @apply font-mono;
+  }
+
+  code,
+  tt {
+    margin: 0 2px;
+    padding: 2px 4px;
+    @media (prefers-color-scheme: dark) {
+      @apply bg-gray-600;
+    }
+    @media (prefers-color-scheme: light) {
+      @apply bg-blue-100;
+    }
+  }
+
+  pre {
+    margin: 12px 0;
+    padding: 20px 24px;
+    @apply rounded-md overflow-x-auto;
+
+    @media (prefers-color-scheme: dark) {
+      @apply bg-gray-700;
+    }
+    @media (prefers-color-scheme: light) {
+      @apply bg-gray-50;
+    }
+  }
+
+  pre > code {
+    margin: 0;
+    padding: 0;
+    border-radius: none;
+    @media (prefers-color-scheme: dark) {
+      @apply bg-gray-700;
+    }
+    @media (prefers-color-scheme: light) {
+      @apply bg-gray-50;
+    }
+  }
+
+  strong,
+  b {
+    font-weight: 500;
+  }
+
+  img {
+    margin: 0 auto;
+    max-width: 90%;
+  }
+}

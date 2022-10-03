@@ -9,7 +9,7 @@
       />
       <header
         ref="headerRef"
-        class="header p-4 mt-2 bg-white rounded-lg shadow-sm text-gray-700 flex sm:mt-4 md:mt-24 items-center"
+        class="header theme-white-600-bg p-4 mt-2 rounded-lg shadow-sm flex sm:mt-4 md:mt-24 items-center"
       >
         <div class="left flex items-center">
           <router-link
@@ -19,10 +19,12 @@
             <img :src="Avatar" class="object-cover w-8 h-8 sm:w-12 sm:h-12" />
           </router-link>
           <div class="flex flex-col ml-2">
-            <router-link to="/" class="text-sm sm:text-lg tracking-wider"
-              >浅秋细雨</router-link
+            <a
+              to="/"
+              class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
+              >浅秋细雨</a
             >
-            <div class="text-xs text-gray-400 tracking-wider font-thin">
+            <div class="theme-gray-400-text text-xs tracking-wider font-thin">
               智文的前端小站
             </div>
           </div>
@@ -30,7 +32,7 @@
 
         <transition name="draw">
           <ul
-            class="nav-list flex items-center h-8 overflow-x-hidden text-gray-400 mr-6"
+            class="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden mx-6"
             v-if="screenType !== 'phone' && isHeaderExtend"
           >
             <li
@@ -76,8 +78,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { screenType } from '../../utils/clientWidth'
-import Avatar from '../../assets/avatar.jpg'
+import { screenType } from '@utils/clientWidth'
+import Avatar from '@assets/avatar.jpg'
 
 // header 是否展开
 const isHeaderExtend = ref(false)
@@ -103,13 +105,8 @@ const handlePhoneMenuClick = () => {
 
 .header {
   @media (min-width: 640px) {
-    min-width: 100 * @unit;
+    min-width: 96 * @unit;
   }
   transition: all 200ms ease;
-}
-
-// 路由高亮
-.router-link-active {
-  color: rgb(55, 65, 81);
 }
 </style>
