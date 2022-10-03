@@ -15,7 +15,7 @@ export default defineComponent({
   setup(props) {
     const articleStore = useArticleStore()
 
-    const loading = ref(true)
+    const loading = ref(!props.blog)
 
     watch(props, () => {
       if (props.blog) {

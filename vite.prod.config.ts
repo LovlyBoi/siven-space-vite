@@ -24,7 +24,8 @@ const prodConfig: UserConfig = {
       },
     }),
     viteCompression({
-      threshold: 50 * 8 * 1024,
+      // 50kb以上进行压缩
+      threshold: 50 * 1024,
     }),
     // 生产版本确保 ES5，Vite 默认打包模块化
     legacy({
