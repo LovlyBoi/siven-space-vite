@@ -13,7 +13,7 @@
         class="text-gray-500 underline-offset-2 hover:underline font-sans"
         href="https://beian.miit.gov.cn/"
         target="_blank"
-        >黑ICP备123456号</a
+        >黑ICP备2022008289号-1</a
       >
     </div>
     <!-- 作者 -->

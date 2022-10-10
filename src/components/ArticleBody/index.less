@@ -250,6 +250,18 @@
 
   h5 {
     font-size: 1em;
+    // font-weight: 600;
+  }
+
+  h5:before {
+    background-color: #b0d6fa;
+    content: '';
+    width: 4px;
+    display: inline-block;
+    height: 4px;
+    vertical-align: middle;
+    margin-bottom: 0.18em;
+    margin-right: 8px;
   }
 
   h6 {
@@ -330,8 +342,10 @@
   }
 
   table {
+    width: 100%;
+    overflow-x: hidden;
     padding: 0;
-    word-break: initial;
+    word-break: break-word;
   }
 
   table tr {
@@ -340,9 +354,9 @@
     padding: 0;
   }
 
-  table.md-table tr:nth-child(2n) {
-    background-color: #fafbfc;
-  }
+  // table tr:nth-child(2n) {
+  //   background-color: #fafbfc;
+  // }
 
   table tr th {
     font-weight: 400;
@@ -373,7 +387,7 @@
   tt {
     font-size: 90%;
     border-radius: 3px;
-    @apply font-mono;
+    @apply font-mono break-words;
   }
 
   code,
