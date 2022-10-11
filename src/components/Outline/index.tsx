@@ -17,7 +17,7 @@ export default defineComponent({
       return '#' + articleStore.activeTab
     })
 
-    const loading = ref(true)
+    const loading = ref(!props.outline)
 
     watch(props, () => {
       if (props.outline) {

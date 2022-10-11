@@ -10,7 +10,7 @@
       <div
         class="update-time theme-gray-400-text text-xs inline-block cursor-default"
       >
-        {{ formatedPublishDate }}
+        发布于 {{ formatedPublishDate }}
       </div>
     </div>
     <router-link
@@ -32,6 +32,10 @@
           class="object-cover min-w-full min-h-full cursor-pointer"
         />
       </router-link>
+    </div>
+    <div class="card-footer theme-gray-400-text text-xs mt-3 flex gap-2">
+      <div class="update-date">更新于：{{ formatedUpdateDate }}</div>
+      <div class="author">作者：{{ author }}</div>
     </div>
   </div>
 </template>
@@ -62,7 +66,11 @@ const mapColor: { [k in TagColor]: string } = {
 const picNum = ref(props.pictures.length > 4 ? 4 : props.pictures.length)
 
 const formatedPublishDate = computed(() =>
-  dayjs(new Date(props.publishDate)).format('YYYY / M / DD')
+  dayjs(new Date(props.publishDate)).format('YYYY / M / DD ')
+)
+
+const formatedUpdateDate = computed(() =>
+  dayjs(new Date(props.updateDate)).fromNow()
 )
 </script>
 
@@ -116,7 +124,16 @@ const formatedPublishDate = computed(() =>
     }
   }
 
+  .clearfix {
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
   .pictures-3 {
+    .clearfix();
     .picture {
       height: 200px;
 
@@ -140,6 +157,7 @@ const formatedPublishDate = computed(() =>
   }
 
   .pictures-4 {
+    .clearfix();
     .picture {
       height: 180px;
 
