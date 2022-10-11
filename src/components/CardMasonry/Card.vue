@@ -125,7 +125,16 @@ const formatedUpdateDate = computed(() =>
     }
   }
 
+  .clearfix {
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
   .pictures-3 {
+    .clearfix();
     .picture {
       height: 200px;
 
@@ -149,6 +158,7 @@ const formatedUpdateDate = computed(() =>
   }
 
   .pictures-4 {
+    .clearfix();
     .picture {
       height: 180px;
 
