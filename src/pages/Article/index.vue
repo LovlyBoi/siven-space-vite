@@ -1,6 +1,11 @@
 <template>
-  <HeaderVue type="plain"></HeaderVue>
-  <div class="">
+  <HeaderVue type="plain" @show-menu="handleShowMenu"></HeaderVue>
+  <Transition name="wait-slide-in-right">
+    <Drawer v-model="showDrawer">
+      <Outline plain :outline="blog?.parsed.outline"></Outline>
+    </Drawer>
+  </Transition>
+  <div>
     <Outline
       :outline="blog?.parsed.outline"
       v-if="screenType !== 'phone'"
@@ -13,6 +18,7 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import HeaderVue from '@/components/Header'
+import Drawer from '@/components/Drawer/index.vue'
 import Outline from '@/components/Outline'
 import ArticleBody from '@/components/ArticleBody'
 import { screenType } from '@utils/clientWidth'
@@ -27,7 +33,6 @@ const blog = ref<Blog>()
 
 getBlogById(route.params.id as string)
   .then(async (data) => {
-    console.log(data)
     blog.value = data
   })
   .catch((e) => {
@@ -39,6 +44,10 @@ getBlogById(route.params.id as string)
       router.replace(`/error/${code}`)
     }
   })
-</script>
 
-<style lang="less" scoped></style>
+const showDrawer = ref(false)
+
+const handleShowMenu = () => {
+  showDrawer.value = true
+}
+</script>

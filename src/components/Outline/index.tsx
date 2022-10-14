@@ -9,6 +9,10 @@ export default defineComponent({
     outline: {
       type: Object as PropType<Outline>,
     },
+    plain: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
     const articleStore = useArticleStore()
@@ -27,7 +31,13 @@ export default defineComponent({
 
     return () => (
       <>
-        <aside class="outline-bar bg-white dark:bg-slate-700 fixed w-44 lg:w-60 xl:w-72 overflow-auto border-r dark:border-gray-500">
+        <aside
+          class={
+            'outline-bar fixed overflow-auto mt-10' + props.plain
+              ? 'w-4/5 h-5/6 overflow-y-auto mx-auto'
+              : 'w-44 lg:w-60 xl:w-72 bg-white dark:bg-slate-700 border-r dark:border-gray-500'
+          }
+        >
           {loading.value ? (
             <>
               <Skeleton
