@@ -33,9 +33,10 @@ export default defineComponent({
       <>
         <aside
           class={
-            'outline-bar fixed overflow-auto mt-10' + props.plain
-              ? 'w-4/5 h-5/6 overflow-y-auto mx-auto'
-              : 'w-44 lg:w-60 xl:w-72 bg-white dark:bg-slate-700 border-r dark:border-gray-500'
+            'outline-bar overflow-auto ' +
+            (props.plain
+              ? 'w-4/5 h-5/6 mx-auto'
+              : 'fixed w-44 lg:w-60 xl:w-72 bg-white dark:bg-slate-700 border-r dark:border-gray-500')
           }
         >
           {loading.value ? (
