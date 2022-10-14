@@ -8,8 +8,8 @@ import {
 import { throttle } from 'lodash-es'
 import CommonHeader from './CommonHeader.vue'
 import StickyHeader from './StickyHeader.vue'
-import MenuForPhone from './MenuForPhone.vue'
 import PlainHeader from './PlainHeader.vue'
+import Drawer from '@/components/Drawer/index.vue'
 import './index.less'
 
 export default defineComponent({
@@ -19,7 +19,7 @@ export default defineComponent({
       default: 'default',
     },
   },
-  setup(props) {
+  setup(props, { attrs }) {
     const navList = [
       {
         title: '全部',
@@ -77,10 +77,6 @@ export default defineComponent({
       showPhoneMenu.value = true
     }
 
-    const handleUnShowMenu = () => {
-      showPhoneMenu.value = false
-    }
-
     const showPhoneMenu = ref(false)
 
     return () => (
@@ -94,18 +90,24 @@ export default defineComponent({
                 <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
               ) : null}
             </Transition>
-            <Transition name="wait-slide-in-right">
-              {showPhoneMenu.value ? (
-                <MenuForPhone
-                  navList={navList}
-                  onUnShowMenu={handleUnShowMenu}
-                />
-              ) : null}
-            </Transition>
+            <Drawer
+              modelValue={showPhoneMenu.value}
+              onUpdate:modelValue={(val) => (showPhoneMenu.value = val)}
+            >
+              <ul class="text-xl text-gray-500 font-thin tracking-widest h-5/6 flex flex-col justify-center items-center">
+                {navList.map((item) => (
+                  <li key={item.title} class="my-2">
+                    <router-link class="drawer-list" to={item.to}>
+                      {item.title}
+                    </router-link>
+                  </li>
+                ))}
+              </ul>
+            </Drawer>
           </>
         ) : props.type === 'plain' ? (
-          // 返回不会动的
-          <PlainHeader navList={navList}></PlainHeader>
+          // 返回不会动的 header，默认透传属性
+          <PlainHeader navList={navList} {...attrs}></PlainHeader>
         ) : null}
       </>
     )

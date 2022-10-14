@@ -24,6 +24,8 @@ export default defineComponent({
       default: true,
     },
   },
+  // 外界传入的属性如果继承会报警告，不再往下透传属性
+  inheritAttrs: false,
   setup(props, { attrs }) {
     const width =
       typeof props.width === 'string' ? props.width : props.width + 'px'
