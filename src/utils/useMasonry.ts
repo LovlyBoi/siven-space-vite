@@ -8,5 +8,5 @@ interface MasonryOptions {
 }
 
 export function useMasonry(selector: string, payload: MasonryOptions = {}) {
-  new Masonry(selector, payload)
+  return new Masonry(selector, payload)
 }
