@@ -1,7 +1,7 @@
 import { request } from '@/request'
 import type { Card, Blog } from '@/types'
 
-function getAllBlogs(ps = 10, pn = 1) {
+export function getAllBlogs(ps = 10, pn = 1) {
   return request<Card[]>({
     method: 'GET',
     url: '/blogs',
@@ -12,7 +12,7 @@ function getAllBlogs(ps = 10, pn = 1) {
   })
 }
 
-function getNotes(ps = 10, pn = 1) {
+export function getNotes(ps = 10, pn = 1) {
   return request<Card[]>({
     method: 'GET',
     url: '/blogs',
@@ -24,7 +24,7 @@ function getNotes(ps = 10, pn = 1) {
   })
 }
 
-function getEssays() {
+export function getEssays() {
   return request<Card[]>({
     method: 'GET',
     url: '/blogs',
@@ -34,11 +34,9 @@ function getEssays() {
   })
 }
 
-function getBlogById(id: string) {
+export function getBlogById(id: string) {
   return request<Blog>({
     method: 'GET',
     url: `/blogs/${id}`,
   })
 }
-
-export { getAllBlogs, getNotes, getEssays, getBlogById }
