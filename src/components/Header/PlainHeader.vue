@@ -14,7 +14,7 @@
           to="/"
           class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
         >
-          浅秋细雨
+          浅秋细语
         </router-link>
         <div class="theme-gray-400-text text-xs tracking-wider font-thin">
           智文的前端小站

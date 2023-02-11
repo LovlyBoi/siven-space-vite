@@ -14,6 +14,9 @@ export default defineComponent({
   },
   setup(props) {
     const articleStore = useArticleStore()
+    // 解决带着hash进入后，被重新定位到首个header问题
+    const firstLocationHash = decodeURI(location.hash.slice(1))
+    let revertLocationFlag = true
 
     const loading = ref(!props.blog)
 
@@ -21,6 +24,14 @@ export default defineComponent({
       if (props.blog) {
         loading.value = false
         observeHeaders((hash) => {
+          // 第一次加载时恢复用户带进来的hash
+          if (revertLocationFlag) {
+            revertLocationFlag = false
+            history.replaceState({}, '', `#${firstLocationHash}`)
+            const header = document.querySelector(`#${firstLocationHash}`)
+            header?.scrollIntoView()
+            hash = firstLocationHash
+          }
           articleStore.setActiveTab(hash)
         })
       }

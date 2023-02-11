@@ -94,7 +94,9 @@
 
 .draw-enter-to,
 .draw-leave-from {
-  max-width: 100vw;
+  // 这个值过大会有收起动画延迟，所以最好是安全的最小值
+  // 1024px是limit-width的宽度，100px是给左侧头像留的
+  max-width: 1024px - 100px;
 }
 
 // 从上面渐入的动画

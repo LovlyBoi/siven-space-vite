@@ -16,7 +16,9 @@ let legacyIO: IntersectionObserver | null = null
 
 // 监视所有h标签前面的节点，是否可见
 // 当改变hash之后，会调用回调函数
-export async function observeHeaders(callback?: (hash: string) => unknown) {
+export async function observeHeaders(
+  onStateSettle?: (hash: string) => unknown
+) {
   legacyIO?.disconnect()
 
   legacyIO = new IntersectionObserver((els) => {
@@ -28,10 +30,11 @@ export async function observeHeaders(callback?: (hash: string) => unknown) {
         mapVisiable.set(prev.target as HTMLElement, false)
       }
     })
-    replaceState(prevs, mapHeader, mapVisiable, callback)
+    replaceState(prevs, mapHeader, mapVisiable, onStateSettle)
   })
 
   const { prevs, mapHeader, mapVisiable } = await addHeaders(legacyIO)
+  console.log('observeHeaders over')
 }
 
 async function addHeaders(io: IntersectionObserver) {
@@ -64,7 +67,7 @@ function replaceState(
   prevs: HTMLElement[],
   mapHeader: Map<HTMLElement, HTMLElement>,
   mapVisiable: Map<HTMLElement, boolean>,
-  callback?: (hash: string) => unknown
+  onStateSettle?: (hash: string) => unknown
 ) {
   // 找到第一个 能看见 的 prev 节点的前一个节点，将对应的 header replaceState
   const firstVisiablePrev = prevs.findIndex((cur) => mapVisiable.get(cur))
@@ -76,5 +79,5 @@ function replaceState(
   }
   if (!currHeader) return
   history.replaceState(null, '', `#${currHeader.id}`)
-  callback && callback(currHeader.id)
+  onStateSettle && onStateSettle(currHeader.id)
 }
