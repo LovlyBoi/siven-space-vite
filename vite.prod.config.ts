@@ -19,7 +19,7 @@ const prodConfig: UserConfig = {
     createHtmlPlugin({
       inject: {
         data: {
-          title: '智文的前端笔记',
+          title: 'How To Cook',
         },
       },
     }),

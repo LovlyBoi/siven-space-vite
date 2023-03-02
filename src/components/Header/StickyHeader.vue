@@ -11,10 +11,10 @@
       </router-link>
       <div class="flex flex-col ml-2">
         <a to="/" class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
-          >浅秋细语</a
+          >How To Cook</a
         >
         <div class="theme-gray-400-text text-xs tracking-wider font-thin">
-          智文的前端小站
+          本地美食推荐
         </div>
       </div>
     </div>
@@ -28,7 +28,10 @@
         :key="item.title"
         class="mx-6 whitespace-nowrap"
       >
-        <router-link :to="item.to">{{ item.title }}</router-link>
+        <!-- 提供props渲染能力 -->
+        <component v-if="item.render" :is="item.render()"></component>
+        <router-link v-else :to="item.to">{{ item.title }}</router-link>
+        <!-- <router-link :to="item.to">{{ item.title }}</router-link> -->
       </li>
     </ul>
 
@@ -42,7 +45,7 @@
 
 <script setup lang="ts">
 import { screenType } from '@utils/clientWidth'
-import Avatar from '@assets/avatar.jpg'
+import Avatar from '@assets/avatar.gif'
 
 defineProps({
   navList: {

@@ -166,3 +166,15 @@
 //     transform: translateX(100%);
 //   }
 // }
+
+// 下拉菜单，hover触发
+.drop-down-menu {
+  display: none;
+  position: absolute;
+  max-width: 200px;
+  z-index: 999;
+}
+
+.drop-down-trigger:hover + .drop-down-menu, .drop-down-menu:hover {
+  display: block;
+}

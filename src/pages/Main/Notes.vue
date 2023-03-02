@@ -4,5 +4,9 @@
 
 <script setup lang="ts">
 import CardContainer from '@/components/CardMasonry/CardContainer.vue'
-import { getNotes } from '@/api'
+import { getBlogsByType } from '@/api'
+
+function getNotes() {
+  return getBlogsByType('notes')
+}
 </script>

@@ -4,7 +4,10 @@ import {
   onMounted,
   onBeforeUnmount,
   Transition,
+  RenderFunction,
+  h,
 } from 'vue'
+import { RouterLink } from 'vue-router'
 import { throttle } from 'lodash-es'
 import CommonHeader from './CommonHeader.vue'
 import StickyHeader from './StickyHeader.vue'
@@ -20,10 +23,52 @@ export default defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const navList = [
+    function dropDownMenu(menuMap: { label: string; to?: string }[] = []) {
+      return h(
+        'ul',
+        {
+          class:
+            'drop-down-menu border p-2 theme-white-600-bg rounded whitespace-normal',
+        },
+        menuMap.map((item) =>
+          h(
+            'li',
+            {
+              class:
+                'inline-block px-1 text-sm  hover:text-indigo-400 dark:hover:text-pink-300',
+            },
+            h(RouterLink, { to: `/classes/${item.to || ''}` }, () => item.label)
+          )
+        )
+      )
+    }
+    const navList: { title: string; to?: string; render?: RenderFunction }[] = [
       {
         title: '全部',
         to: '/all',
+      },
+      {
+        title: '分类',
+        to: '/notFound',
+        render() {
+          return h('div', { class: '' }, [
+            h(
+              'div',
+              {
+                class: 'drop-down-trigger',
+              },
+              '分类'
+            ),
+            dropDownMenu([
+              { label: '肉菜', to: 'meat-dish' },
+              { label: '素菜', to: 'vegetable-dish' },
+              { label: '主食', to: 'staple' },
+              { label: '甜点', to: 'dessert' },
+              { label: '饮品', to: 'drink' },
+              { label: '汤', to: 'soup' },
+            ]),
+          ])
+        },
       },
       {
         title: '笔记',
@@ -32,10 +77,6 @@ export default defineComponent({
       {
         title: '生活随笔',
         to: '/essays',
-      },
-      {
-        title: '留言板',
-        to: '/messages',
       },
     ]
 
@@ -97,9 +138,13 @@ export default defineComponent({
               <ul class="text-xl text-gray-500 font-thin tracking-widest h-5/6 flex flex-col justify-center items-center">
                 {navList.map((item) => (
                   <li key={item.title} class="my-2">
-                    <router-link class="drawer-list" to={item.to}>
-                      {item.title}
-                    </router-link>
+                    {item.render ? (
+                      item.render()
+                    ) : (
+                      <router-link class="drawer-list" to={item.to}>
+                        {item.title}
+                      </router-link>
+                    )}
                   </li>
                 ))}
               </ul>

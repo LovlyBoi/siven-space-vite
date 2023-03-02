@@ -2,15 +2,15 @@
   <div class="width-limit max-w-screen-lg mx-1 sm:mx-4 lg:mx-auto">
     <Header />
     <RouterView v-slot="{ Component }">
-      <KeepAlive :max="3">
-        <component
-          :is="Component"
-          @card-loaded=";(cardState = 'loaded') && masonry()"
-          @card-empty="cardState = 'empty'"
-          @card-error="cardState = 'error'"
-          @card-update="masonry"
-        ></component>
-      </KeepAlive>
+      <!-- <KeepAlive :max="3"> -->
+      <component
+        :is="Component"
+        @card-loaded=";(cardState = 'loaded') && masonry()"
+        @card-empty="cardState = 'empty'"
+        @card-error="cardState = 'error'"
+        @card-update="masonry"
+      ></component>
+      <!-- </KeepAlive> -->
     </RouterView>
     <Footer></Footer>
   </div>
