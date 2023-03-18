@@ -1,37 +1,39 @@
 <template>
-  <div
-    v-show="showDrawer"
-    class="menu-mask fixed top-0 bottom-0 left-0 right-0 flex flex-row z-20"
-  >
-    <Transition name="fade">
-      <div
-        v-show="showDrawer"
-        class="mask-left w-2/6 h-full"
-        @click="() => closeByMask && handleClose()"
-      ></div>
-    </Transition>
-    <Transition name="slide-in-right">
-      <div
-        v-show="showDrawer"
-        class="menu w-4/6 h-full bg-white backdrop-blur-lg bg-opacity-60"
-        @click="(e) => e.stopPropagation()"
-      >
-        <slot name="header">
-          <div class="drawer-header relative h-20 w-full">
-            <div
-              class="no-dark-mode cross fixed top-6 right-8 p-1 box-content"
-              @click="handleClose"
-            >
-              <div></div>
-              <div></div>
+  <Transition name="wait-slide-in-right">
+    <div
+      v-show="showDrawer"
+      class="menu-mask fixed top-0 bottom-0 left-0 right-0 flex flex-row z-20"
+    >
+      <Transition name="fade">
+        <div
+          v-show="showDrawer"
+          class="mask-left w-2/6 h-full"
+          @click="() => closeByMask && handleClose()"
+        ></div>
+      </Transition>
+      <Transition name="slide-in-right">
+        <div
+          v-show="showDrawer"
+          class="menu w-4/6 h-full bg-white backdrop-blur-lg bg-opacity-60"
+          @click="(e) => e.stopPropagation()"
+        >
+          <slot name="header">
+            <div class="drawer-header relative h-20 w-full">
+              <div
+                class="no-dark-mode cross fixed top-6 right-8 p-1 box-content"
+                @click="handleClose"
+              >
+                <div></div>
+                <div></div>
+              </div>
             </div>
-          </div>
-        </slot>
+          </slot>
 
-        <slot></slot>
-      </div>
-    </Transition>
-  </div>
+          <slot></slot>
+        </div>
+      </Transition>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">

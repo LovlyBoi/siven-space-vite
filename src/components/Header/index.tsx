@@ -90,6 +90,7 @@ export default defineComponent({
                 <StickyHeader navList={navList} onShowMenu={handleShowMenu} />
               ) : null}
             </Transition>
+            {/* <Transition name="wait-slide-in-right"> */}
             <Drawer
               modelValue={showPhoneMenu.value}
               onUpdate:modelValue={(val) => (showPhoneMenu.value = val)}
@@ -104,6 +105,7 @@ export default defineComponent({
                 ))}
               </ul>
             </Drawer>
+            {/* </Transition> */}
           </>
         ) : props.type === 'plain' ? (
           // 返回不会动的 header，默认透传属性

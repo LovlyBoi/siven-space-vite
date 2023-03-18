@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// 右侧滑入动画
+@slide-time: 200ms;
+
+.slide-in-right-enter-from,
+.slide-in-right-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-in-right-enter-active,
+.slide-in-right-leave-active {
+  transition: all @slide-time;
+}
+// 空动画，为了让外层的组件不立即销毁
+.wait-slide-in-right-enter-active,
+.wait-slide-in-right-leave-active {
+  transition: all @slide-time;
+}

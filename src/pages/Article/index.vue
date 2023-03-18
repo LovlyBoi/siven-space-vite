@@ -1,10 +1,10 @@
 <template>
   <HeaderVue type="plain" @show-menu="handleShowMenu"></HeaderVue>
-  <Transition name="wait-slide-in-right">
-    <Drawer v-model="showDrawer">
-      <Outline plain :outline="blog?.parsed.outline"></Outline>
-    </Drawer>
-  </Transition>
+  <!-- <Transition name="wait-slide-in-right"> -->
+  <Drawer v-model="showDrawer">
+    <Outline plain :outline="blog?.parsed.outline"></Outline>
+  </Drawer>
+  <!-- </Transition> -->
   <div>
     <Outline
       :outline="blog?.parsed.outline"
