@@ -22,36 +22,40 @@
       </div>
     </div>
 
-    <ul
-      class="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden"
-      v-if="screenType !== 'phone'"
-    >
-      <li
-        v-for="item in navList"
-        :key="item.title"
-        class="mx-6 whitespace-nowrap transition-all duration-300 group"
+    <div class="right flex items-center">
+      <theme-switcher></theme-switcher>
+      <ul
+        class="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden"
+        v-if="screenType !== 'phone'"
       >
-        <!-- <router-link :to="item.to">{{ item.title }}</router-link> -->
-        <!-- 提供props渲染能力 -->
-        <component v-if="item.render" :is="item.render()"></component>
-        <router-link
-          class="group-hover:text-indigo-400 dark:group-hover:text-pink-300"
-          v-else
-          :to="item.to"
-          >{{ item.title }}</router-link
+        <li
+          v-for="item in navList"
+          :key="item.title"
+          class="mx-6 whitespace-nowrap transition-all duration-300 group"
         >
-      </li>
-    </ul>
+          <!-- <router-link :to="item.to">{{ item.title }}</router-link> -->
+          <!-- 提供props渲染能力 -->
+          <component v-if="item.render" :is="item.render()"></component>
+          <router-link
+            class="group-hover:text-indigo-400 dark:group-hover:text-pink-300"
+            v-else
+            :to="item.to"
+            >{{ item.title }}</router-link
+          >
+        </li>
+      </ul>
 
-    <label class="menu-static mr-4" @click="handlePhoneMenuClick" v-else>
-      <div></div>
-      <div></div>
-      <div></div>
-    </label>
+      <label class="menu-static mx-4" @click="handlePhoneMenuClick" v-else>
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import ThemeSwitcher from './ThemeSwitcher.vue'
 import { screenType } from '@utils/clientWidth'
 import Avatar from '@assets/avatar.gif'
 
