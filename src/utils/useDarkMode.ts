@@ -8,9 +8,9 @@ const mqList =
 
 mqList &&
   mqList.addEventListener('change', (e) => {
-    const cachedMode = getChache<ThemeMode | undefined>('app_theme', true)
-    // 如果用户操作过系统样式
-    if (cachedMode) return
+    // const cachedMode = getChache<ThemeMode | undefined>('app_theme', true)
+    // // 如果用户操作过系统样式
+    // if (cachedMode) return
     const mode = e.matches ? 'dark' : 'light'
     setTheme(mode)
     currTheme.value = mode
