@@ -24,14 +24,21 @@ import ArticleBody from '@/components/ArticleBody'
 import { screenType } from '@utils/clientWidth'
 import { getBlogById } from '@/api'
 import { AxiosError } from 'axios'
+import { useTrackerStore } from '@/store/tracker'
 import type { Blog } from '@/types'
 
 const router = useRouter()
 const route = useRoute()
 
+const trackerStore = useTrackerStore()
+
 const blog = ref<Blog>()
 
-getBlogById(route.params.id as string)
+trackerStore.asyncVisitorInfo
+  .then(({ id }) => {
+    console.log(route.params.id as string, id)
+    return getBlogById(route.params.id as string, id)
+  })
   .then(async (data) => {
     blog.value = data
   })

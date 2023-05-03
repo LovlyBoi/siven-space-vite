@@ -2,12 +2,22 @@ import { request } from '@/request'
 import type { Card, Blog, BlogType } from '@/types'
 
 export function getAllBlogs(ps = 10, pn = 1) {
-  return request<Card[]>({
+  return request<{ cards: Card[]; hasNext: boolean }>({
     method: 'GET',
     url: '/blogs',
     params: {
       ps,
       pn,
+    },
+  })
+}
+
+export function getRecommend(visitorId: string) {
+  return request<Card[]>({
+    method: 'GET',
+    url: '/blogs/recommend',
+    params: {
+      visitorId,
     },
   })
 }
@@ -44,9 +54,12 @@ export function getBlogsByType(type: keyof typeof BlogType) {
   })
 }
 
-export function getBlogById(id: string) {
+export function getBlogById(id: string, visitorId?: string) {
   return request<Blog>({
-    method: 'GET',
-    url: `/blogs/${id}`,
+    method: 'POST',
+    url: `/blogs/article/${id}`,
+    params: {
+      visitorId,
+    },
   })
 }
