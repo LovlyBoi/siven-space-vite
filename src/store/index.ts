@@ -56,6 +56,7 @@ export const useMainStore = defineStore('main', {
       const blogs = this.blogs
       const blogsToShow = this.blogsToShow
       const queryCount = ps * pn
+      const outOfIndex = () => this.readPoint > blogs.length - 1
       let stillNeed = queryCount - blogsToShow.length
       let hasNext = true
       if (stillNeed > 0) {
@@ -70,8 +71,8 @@ export const useMainStore = defineStore('main', {
           this.filter.add(id)
         })
         while (stillNeed > 0) {
-          if (this.cachedAll && this.readPoint >= blogs.length - 1) break
-          else if (this.readPoint >= blogs.length - 1) {
+          if (this.cachedAll && outOfIndex()) break
+          else if (outOfIndex()) {
             await this.getBlogs()
           }
           const item = blogs[this.readPoint++]
@@ -81,7 +82,7 @@ export const useMainStore = defineStore('main', {
             this.filter.add(item.id)
           }
         }
-        if (this.cachedAll && this.readPoint >= blogs.length - 1) {
+        if (this.cachedAll && outOfIndex()) {
           hasNext = false
         }
         blogsToShow.push(...newBlogs)
