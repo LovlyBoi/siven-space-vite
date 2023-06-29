@@ -4,7 +4,6 @@ import {
   onMounted,
   onBeforeUnmount,
   Transition,
-  RenderFunction,
   h,
   VNodeChild,
 } from 'vue'
