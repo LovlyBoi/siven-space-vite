@@ -44,8 +44,8 @@ export function getRecommend(visitorId: string) {
 //   })
 // }
 
-export function getBlogsByType(type: keyof typeof BlogType) {
-  return request<Card[]>({
+export function getBlogsByType(type: string) {
+  return request<{ cards: Card[]; hasNext: boolean }>({
     method: 'GET',
     url: '/blogs',
     params: {

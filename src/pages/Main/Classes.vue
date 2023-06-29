@@ -11,7 +11,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 const getBlogs = () => {
-  return getBlogsByType(route.params.className || 'all')
+  return getBlogsByType((route.params.className as string) || 'all')
 }
 
 // 由于架构问题，只能强制子组件刷新
