@@ -5,7 +5,7 @@
     <div class="left flex items-center">
       <router-link
         to="/"
-        class="block w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex justify-center items-center"
+        class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex justify-center items-center"
       >
         <img :src="Avatar" class="object-cover w-8 h-8 sm:w-12 sm:h-12" />
       </router-link>

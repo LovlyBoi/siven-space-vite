@@ -176,7 +176,7 @@ export default defineComponent({
               modelValue={showPhoneMenu.value}
               onUpdate:modelValue={(val) => (showPhoneMenu.value = val)}
             >
-              <ul class="text-xl text-gray-500 font-thin tracking-widest h-5/6 flex flex-col justify-center items-center">
+              <ul class="text-xl text-gray-500 font-thin tracking-widest h-5/6 flex flex-col justify-center px-12">
                 {navList.map((item) => (
                   <li key={item.title} class="my-2">
                     {item.render ? (
