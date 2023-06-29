@@ -11,10 +11,10 @@
       </router-link>
       <div class="flex flex-col ml-2">
         <a to="/" class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
-          >How To Cook</a
+          >浅秋细语</a
         >
         <div class="theme-gray-400-text text-xs tracking-wider font-thin">
-          本地美食推荐
+          智文的前端小站
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import ThemeSwitcher from './ThemeSwitcher.vue'
 import { screenType } from '@utils/clientWidth'
-import Avatar from '@assets/avatar.gif'
+import Avatar from '@assets/avatar.jpg'
 
 defineProps({
   navList: {

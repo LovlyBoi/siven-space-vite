@@ -19,7 +19,7 @@ const prodConfig: UserConfig = {
     createHtmlPlugin({
       inject: {
         data: {
-          title: 'How To Cook',
+          title: '智文的前端小站',
         },
       },
     }),
@@ -34,11 +34,11 @@ const prodConfig: UserConfig = {
     // cdn
     viteCDNPlugin({
       modules: [
-        {
-          name: 'axios',
-          var: 'axios',
-          path: 'https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js',
-        },
+        // {
+        //   name: 'axios',
+        //   var: 'axios',
+        //   path: 'https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js',
+        // },
         // {
         //   name: 'masonry-layout',
         //   var: 'Masonry',

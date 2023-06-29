@@ -56,12 +56,12 @@ export default defineComponent({
         to: '/notFound',
         render(mobile = false) {
           const subList = [
-            { label: '肉菜', to: 'meat-dish' },
-            { label: '素菜', to: 'vegetable-dish' },
-            { label: '主食', to: 'staple' },
-            { label: '甜点', to: 'dessert' },
-            { label: '饮品', to: 'drink' },
-            { label: '汤', to: 'soup' },
+            { label: '前端技术', to: 'front-end-tec' },
+            { label: 'Node', to: 'node' },
+            { label: '数学', to: 'math' },
+            { label: '生活随笔', to: 'life' },
+            { label: '后端技术', to: 'back-end-tec' },
+            { label: '其他技术', to: 'other-tec' },
           ]
           return h('div', { class: '' }, [
             h(

@@ -5,7 +5,7 @@
     <!-- 备案信息 -->
     <div>
       <div class="mb-1">
-        <span>Copyright © 2019 - 2022</span>
+        <span>Copyright © 2022 - 2023</span>
         <span class="text-purple-500 mx-2">Siven</span>
         <span>. All Rights Reserved.</span>
       </div>
