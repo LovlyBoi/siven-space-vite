@@ -16,16 +16,19 @@
             to="/"
             class="block w-8 h-8 sm:w-12 sm:h-12 rounded-full overflow-hidden"
           >
-            <img :src="Avatar" class="object-cover w-8 h-8 sm:w-12 sm:h-12" />
+            <img
+              :src="Avatar"
+              class="object-cover w-8 h-8 sm:w-12 sm:h-12 scale-110"
+            />
           </router-link>
           <div class="flex flex-col ml-2">
             <a
               to="/"
               class="theme-gray-600-text text-sm sm:text-lg tracking-wider"
-              >浅秋细语</a
+              >How To Cook</a
             >
             <div class="theme-gray-400-text text-xs tracking-wider font-thin">
-              智文的前端小站
+              本地美食推荐
             </div>
           </div>
         </div>
@@ -38,9 +41,11 @@
             <li
               v-for="item in navList"
               :key="item.title"
-              class="mx-6 whitespace-nowrap"
+              class="px-6 whitespace-nowrap"
             >
-              <router-link :to="item.to">{{ item.title }}</router-link>
+              <!-- 提供props渲染能力 -->
+              <component v-if="item.render" :is="item.render()"></component>
+              <router-link v-else :to="item.to">{{ item.title }}</router-link>
             </li>
           </ul>
         </transition>
@@ -77,9 +82,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, h } from 'vue'
 import { screenType } from '@utils/clientWidth'
-import Avatar from '@assets/avatar.jpg'
+import Avatar from '@assets/avatar.gif'
 
 // header 是否展开
 const isHeaderExtend = ref(false)

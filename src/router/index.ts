@@ -8,6 +8,7 @@ import NotFoundPage from '@/pages/NotFound.vue'
 import All from '@/pages/Main/All.vue'
 import Notes from '@/pages/Main/Notes.vue'
 import Essays from '@/pages/Main/Essays.vue'
+import Classes from '@/pages/Main/Classes.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -30,6 +31,11 @@ const routes: RouteRecordRaw[] = [
         path: '/essays',
         name: 'essays',
         component: Essays,
+      },
+      {
+        path: '/classes/:className',
+        name: 'classes',
+        component: Classes,
       },
     ],
   },

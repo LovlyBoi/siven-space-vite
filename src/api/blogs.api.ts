@@ -1,8 +1,8 @@
 import { request } from '@/request'
-import type { Card, Blog } from '@/types'
+import type { Card, Blog, BlogType } from '@/types'
 
 export function getAllBlogs(ps = 10, pn = 1) {
-  return request<Card[]>({
+  return request<{ cards: Card[]; hasNext: boolean }>({
     method: 'GET',
     url: '/blogs',
     params: {
@@ -12,31 +12,54 @@ export function getAllBlogs(ps = 10, pn = 1) {
   })
 }
 
-export function getNotes(ps = 10, pn = 1) {
+export function getRecommend(visitorId: string) {
   return request<Card[]>({
     method: 'GET',
-    url: '/blogs',
+    url: '/blogs/recommend',
     params: {
-      type: 'note',
-      ps,
-      pn,
+      visitorId,
     },
   })
 }
 
-export function getEssays() {
+// export function getNotes(ps = 10, pn = 1) {
+//   return request<Card[]>({
+//     method: 'GET',
+//     url: '/blogs',
+//     params: {
+//       type: 'note',
+//       ps,
+//       pn,
+//     },
+//   })
+// }
+
+// export function getEssays() {
+//   return request<Card[]>({
+//     method: 'GET',
+//     url: '/blogs',
+//     params: {
+//       type: 'essay',
+//     },
+//   })
+// }
+
+export function getBlogsByType(type: keyof typeof BlogType) {
   return request<Card[]>({
     method: 'GET',
     url: '/blogs',
     params: {
-      type: 'essay',
+      type,
     },
   })
 }
 
-export function getBlogById(id: string) {
+export function getBlogById(id: string, visitorId?: string) {
   return request<Blog>({
-    method: 'GET',
-    url: `/blogs/${id}`,
+    method: 'POST',
+    url: `/blogs/article/${id}`,
+    params: {
+      visitorId,
+    },
   })
 }

@@ -25,7 +25,10 @@ import Empty from './Empty.vue'
 import type { Card } from '@/types'
 
 const props = defineProps<{
-  action: (ps?: number, pn?: number) => Promise<Card[]>
+  action: (
+    ps?: number,
+    pn?: number
+  ) => Promise<{ cards: Card[]; hasNext: boolean }>
 }>()
 
 const emit = defineEmits([
@@ -57,15 +60,19 @@ const loadingMore = ref(false)
 const handleLoadMore = () => {
   if (loadingMore.value) return
   loadingMore.value = true
-  getCards().then(() => emit('card-update'))
+  getCards()
+    .then(() => emit('card-update'))
+    .finally(() => {
+      loadingMore.value = false
+    })
 }
 
 async function getCards(firstCall = false) {
   return props
     .action(pageSize, ++pageNumber)
-    .then((nextPart) => {
+    .then(({ cards: nextPart, hasNext }) => {
       cards.value.push(...nextPart)
-      if (nextPart.length < pageSize) haveMore.value = false
+      haveMore.value = hasNext
       if (firstCall) {
         if (cards.value.length > 0) {
           changeCardState('loaded')

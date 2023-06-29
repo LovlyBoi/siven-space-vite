@@ -4,7 +4,10 @@ import {
   onMounted,
   onBeforeUnmount,
   Transition,
+  h,
+  VNodeChild,
 } from 'vue'
+import { RouterLink } from 'vue-router'
 import { throttle } from 'lodash-es'
 import CommonHeader from './CommonHeader.vue'
 import StickyHeader from './StickyHeader.vue'
@@ -20,23 +23,101 @@ export default defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const navList = [
+    function dropDownMenu(menuMap: { label: string; to?: string }[] = []) {
+      return h(
+        'ul',
+        {
+          class:
+            'drop-down-menu border p-2 theme-white-600-bg rounded whitespace-normal',
+        },
+        menuMap.map((item) =>
+          h(
+            'li',
+            {
+              class:
+                'inline-block px-1 text-sm  hover:text-indigo-400 dark:hover:text-pink-300',
+            },
+            h(RouterLink, { to: `/classes/${item.to || ''}` }, () => item.label)
+          )
+        )
+      )
+    }
+    const navList: {
+      title: string
+      to?: string
+      render?: (mobile?: boolean) => VNodeChild
+    }[] = [
       {
         title: '全部',
         to: '/all',
       },
       {
-        title: '笔记',
-        to: '/notes',
+        title: '分类',
+        to: '/notFound',
+        render(mobile = false) {
+          const subList = [
+            { label: '肉菜', to: 'meat-dish' },
+            { label: '素菜', to: 'vegetable-dish' },
+            { label: '主食', to: 'staple' },
+            { label: '甜点', to: 'dessert' },
+            { label: '饮品', to: 'drink' },
+            { label: '汤', to: 'soup' },
+          ]
+          return h('div', { class: '' }, [
+            h(
+              'div',
+              {
+                class: 'drop-down-trigger',
+              },
+              [
+                '分类',
+                mobile &&
+                  h(
+                    'ul',
+                    { class: 'relative left-3 ' },
+                    subList.map((item) => {
+                      return h(
+                        'li',
+                        {},
+                        h(
+                          RouterLink,
+                          {
+                            to: `/classes/${item.to || ''}`,
+                            class: 'drawer-list',
+                          },
+                          () => item.label
+                        )
+                      )
+                    })
+                  ),
+              ]
+            ),
+            !mobile && dropDownMenu(subList),
+          ])
+        },
       },
       {
-        title: '生活随笔',
-        to: '/essays',
+        title: '管理文章',
+        to: '/notFound',
+        render(mobile = false) {
+          return (
+            !mobile &&
+            h(
+              'a',
+              { target: '_blank', href: 'http://siven.cc/cms/index.html' },
+              '管理文章'
+            )
+          )
+        },
       },
-      {
-        title: '留言板',
-        to: '/messages',
-      },
+      // {
+      //   title: '笔记',
+      //   to: '/notes',
+      // },
+      // {
+      //   title: '生活随笔',
+      //   to: '/essays',
+      // },
     ]
 
     // header 是否sticky
@@ -98,9 +179,13 @@ export default defineComponent({
               <ul class="text-xl text-gray-500 font-thin tracking-widest h-5/6 flex flex-col justify-center items-center">
                 {navList.map((item) => (
                   <li key={item.title} class="my-2">
-                    <router-link class="drawer-list" to={item.to}>
-                      {item.title}
-                    </router-link>
+                    {item.render ? (
+                      item.render(true)
+                    ) : (
+                      <router-link class="drawer-list" to={item.to}>
+                        {item.title}
+                      </router-link>
+                    )}
                   </li>
                 ))}
               </ul>
