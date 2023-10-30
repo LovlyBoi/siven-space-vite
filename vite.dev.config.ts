@@ -16,7 +16,7 @@ const config: UserConfig = {
     createHtmlPlugin({
       inject: {
         data: {
-          title: 'How To Cook',
+          title: '智文的前端小站',
         },
       },
     }),
