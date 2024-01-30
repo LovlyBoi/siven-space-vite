@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "prepare": "husky install && husky add .husky/commit-msg 'pnpm commitlint --edit $1'",
+    "prepare": "husky install && husky add .husky/commit-msg 'yarn commitlint --edit $1'",
     "commit": "git-cz"
   },
   "config": {
